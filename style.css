@@ -646,3 +646,70 @@ aside .footer-redes .icones-redes {
     align-items: center;
     gap: 15px;
 }
+
+/* ---------- PAGINA DE JOGOS -------------*/
+
+.bloco-1 {
+    position: relative;
+    background-color: #ffffff;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    width: 60%;
+    min-width: 1000px;
+    height: 800px;
+    padding: 20px; /* Garante margem interna na caixa branca */
+    box-sizing: border-box;
+}
+
+.bloco-1 .jogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.bloco-1 .jogo img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px;
+    object-fit: cover;
+}
+
+.bloco-1 .jogo h2 {
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.bloco-lateral {
+    width: 380px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.blocos {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 30px;
+    padding: 20px;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.coluna-direita {
+    width: 100%;
+    height: 385px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+}
