@@ -1,0 +1,620 @@
+/* O <body> segura a <aside> e o <div class=carrocel> */
+body {
+    display: flex; /*Coloca a barra lateral e o conteudo principal lado a lado*/
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2A2A2A; /* Fundo escuro do site */
+    color: #ffffff; /* Cor do texto */
+    min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+    width: 100vw; /* Garante que o body ocupe toda a largura da tela */
+    overflow-x: hidden; /* Evita barra de rolagem horizontal */
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8); /* Sombra suave ao redor do site */
+    min-width: 100vh;
+}
+
+
+aside .logo-link:active,
+aside .logo-link img:active,
+aside .logo-link,
+aside .logo-link:hover,
+aside .logo-link:focus {
+    border: none !important; /* Remove qualquer borda ao redor da imagem do logo */
+    outline: none !important; /* Remove o contorno ao focar na imagem do logo */
+    background-color: transparent !important; /* Garante que o fundo da imagem do logo seja transparente */
+    padding: 0 !important; /* Remove qualquer padding ao redor da imagem do logo */
+    transform: none !important; /* Garante que não haja transformação ao clicar ou focar na imagem do logo */
+}
+
+/* O <header> segura a busca e o botão entrar */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribui a busca no meio e o botão na ponta */
+    width: 100%;
+    padding: 10px 20px;
+    position: relative; /* Cria a referência de posicionamento */
+    box-sizing: border-box;
+}
+
+header form {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 30px;
+}
+
+/* CONTAINER DA BUSCA */
+header .buscar{
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a; /* Fundo levemente mais escuro que a barra */
+    border: 1px solid #333333; /* Borda sutil */
+    border-radius: 20px; /* Bordas arredondadas */
+    padding: 8px 16px;
+    width: 320px; /* Largura fixa para o campo de busca */
+    transition: border-color 0.2s ease; /* Animação suave para hover */
+}
+
+/* Efeito ao clicar no campo de busca */
+header .buscar:focus-within {
+    border-color: #08469E; /* Cor da borda ao focar no campo de busca */
+}
+
+/* ÍCONE DA LUPA */
+header .buscar svg {
+    margin-right: 10px; /* Espaçamento entre o ícone e o input */
+    flex-shrink: 0; /* Impede que o ícone encolha */
+    stroke: #888888; /* Cor do ícone */
+}
+
+/* CAMPO DE TEXTO */
+header .buscar input{
+    background: transparent; /* Fundo transparente para combinar com o container */
+    border: none; /* Remove a borda padrão do input */
+    outline: none; /* Remove o contorno ao focar */
+    color: #ffffff; /* Cor do texto */
+    font-size: 0.9rem; /* Tamanho da fonte */
+    width: 100%; /* Faz o input ocupar todo o espaço disponível */
+}
+
+/* Cor do texto de dica (placeholder) */
+header .buscar input::placeholder {
+    color: #888888; /* Cor do placeholder */ 
+}
+
+/* BOTÃO LOGIN*/
+header button[type="button"] {
+    margin-left: auto;
+    margin-right: 50px;
+    background-color: blue;
+    color: white;
+    border: none; /* Remove a borda padrão do botão */
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    font-weight: 900;
+    transition: background-color 0.2s ease; /* Animação suave para hover */
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+/* Container da área do usuário no header */
+.area-usuario {
+    margin-left: auto;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/* Painel exibido quando logado */
+.painel-usuario {
+    display: flex !important;
+    align-items: center !important; /* Centraliza o texto e o botão na mesma linha vertical */
+    justify-content: center;
+    gap: 12px; /* Espaço horizontal entre o texto e o botão */
+    color: #fff;
+    font-size: 14px;
+    height: 100%; /* Garante a altura do container */
+}
+
+.painel-usuario span {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 !important; /* Remove margens antigas que possam atrapalhar */
+    padding: 0 !important;
+    line-height: 1  !important; /* Remove altura de linha extra do texto */
+    color: #fff;
+}
+
+/* Botão Sair discreto */
+.btn-sair {
+    background-color: transparent;
+    border: 1px solid #ff4444;
+    color: #ff4444;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s;
+    margin: 0 !important; /* Remove margens extras do botão caso existam */
+    vertical-align: middle;
+}
+
+.btn-sair:hover {
+    background-color: #ff4444;
+    color: #fff;
+}
+
+/* EFEITO BOTÃO LOGIN */
+header button:hover {
+    background-color: darkblue;
+}
+
+header button:active {
+    transform: scale(0.95); /* Leve efeito de clique */
+}
+
+aside {
+    width: 300px; /* Largura fixa mais enxuta */
+    min-width: 300px; /* Garante que a barra lateral não encolha */
+    max-width: 300px; /* Garante que a barra lateral não cresça */
+    background-color: #08469E;
+    min-height: 100vh; /* Garante que a barra lateral ocupe toda a altura da tela */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    flex-shrink: 0; /* Impede que a barra encolha quando a tela mudar de tamanho */
+    border-radius: 0 25px 25px 0; /* Bordas arredondadas apenas no lado direito */
+}
+
+aside img{
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    align-self: flex-start; /* Alinha a logo no início do container */
+    margin-left: 10px; /* Ajuste fino para bater com o alinhamento do texto */
+    margin-right: 0;
+    display: block; /* Garante que a imagem seja tratada como bloco para centralização */
+}
+
+aside img:hover {
+    transform: scale(1.15); /* Leve zoom ao passar o mouse */
+    transition: transform 0.5s ease; /* Animação suave para o zoom */
+}
+
+aside nav ul {
+    list-style: none;
+    width: 100%;
+    padding: 0; /* IMPORTANTE: Remove o padding padrão da ul */
+    margin: 0 auto 30px auto; /* Centraliza horizontalmente e dá 30px na base */
+    text-align: center; /* Garante que os itens fiquem alinhados com o centro */
+}
+
+aside nav ul li {
+    margin-bottom: 15px;
+    text-align: center; /* Centraliza o conteúdo do item da lista */;
+}
+
+aside nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block; /* Permite que o link tenha padding e background */
+    width: 100%; /* Faz o link ocupar toda a largura do item da lista */
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+aside nav ul li a:hover {
+    transform: scale(1.15); /* Leve zoom ao passar o mouse */
+    background-color: #1a1a1a;
+}
+
+aside nav ul li a:active {
+    transform: scale(0.95); /* Leve efeito de clique */
+}
+
+/* Linha Divisória da Barra Lateral */
+aside hr.divisoria {
+    border: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2); /* Linha semi-transparente */
+    margin: 25px auto !important; /* Espaçamento em cima e embaixo da linha */
+    width: 110%;
+}
+
+.site {
+    flex: 1; /* Faz o carrocel ocupar o espaço restante */
+    width: calc(100vw - 300px); /* Ajusta a largura do site para ocupar o espaço restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o footer para o final da área disponível */
+    min-height: 100vh; /* Garante que o site ocupe toda a altura da tela */
+    padding: 20px;
+    box-sizing: border-box; /* Inclui padding e border no cálculo da largura e altura */
+}
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+
+.banner img {
+    border-radius: 15px;
+}
+
+.fade-img {
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%); /*Faz o fade na imagem e puxa a biblioteca */
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%); /* Faz a mascara e aplica na imagem */
+}
+
+.carrocel {
+    position: relative;
+    background-color: #2A2A2A;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+    /* Centralização e controle de tamanho */
+
+    flex: 1; /* Faz o carrocel ocupar o espaço restante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px; /* Limita a largura máxima para não esticar demais em telas grandes */
+    margin-left: auto; /* Centraliza o banner na área de conteúdo */
+    margin: 0 auto; /* Centraliza o banner horizontalmente */
+    width: 100%;
+}
+
+/* Container principal do carrossel */
+.carrocel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px; /* Limita a largura máxima do carrossel */
+    height: 480px; /* Altura fixa para o carrossel */
+    margin: 0 auto; /* Centraliza o carrossel horizontalmente */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites do carrossel */
+    border-radius: 15px; /* Bordas arredondadas para o carrossel */
+    cursor: pointer; /* Indica que o carrossel é interativo */
+}
+
+/* Estilo individual de cada slide */
+.carrocel-container .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Inicialmente invisível */
+    transition: opacity 0.6s ease-in-out; /* Transição suave para o efeito de fade */
+    pointer-events: none; /* Impede interação com slides invisíveis */
+}
+
+/* Slide visível */
+.carrocel-container .slide.ativo {
+    opacity: 1; /* Torna o slide visível */
+    pointer-events: auto; /* Permite interação com o slide ativo */
+}
+
+/* Ajuste da imagem dentro do banner */
+.carrocel-container .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o espaço do slide sem distorcer */
+}
+
+.btn-carrocel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparante para os botões */
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    padding: 12px 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background 0.3s ease; /* Animação suave para hover */
+    z-index: 10; /* Garante que os botões fiquem acima das imagens do carrossel */
+}
+
+.btn-carrocel:hover {
+    background: rgba(0, 86, 179, 0.9); /* Cor de fundo mais intensa ao passar o mouse */
+}
+
+.btn-carrocel.anterior { left: 15px; }
+.btn-carrocel.proximo { right: 15px; }
+
+.carrocel img {
+    width: 100%;
+    height: auto; /* Ajusta a altura automaticamente para manter a proporção da imagem */
+    display: block;
+    object-fit: cover; /*Garante que a imagem preencha o espaço do carrocel sem distorcer*/
+    border-radius: 15px;
+}
+
+.carrocel-container .slide h2 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    z-index: 5; /* Garante que o título fique acima da imagem do slide */
+    margin: 0; /* Remove qualquer margem padrão do h2 */   
+}
+
+/* SEÇÃO DE PRODUTOS */
+.produtos h3 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    font-size: 1.4rem;
+    background-color: #ff0000;
+    border-radius: 6px;
+    width: 300px;
+    height: 30px;
+}
+
+/* Container da grade */
+.grade-produtos {
+    display: grid;     /* Cria colunas responsivas que se ajustam automaticamente */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+    gap: 20px; /* Espaçamento entre os produtos */
+    justify-content: center; /* Centraliza os produtos na grade */
+    align-items: start; /* OBRIGATÓRIO: impede que os cards estiquem até o final da tela */
+}
+
+/* CARD INDIVIDUAL */
+.jogo-produtos {
+    background-color: #e0e0e0; /* Fundo do card */
+    color: #000; /* Cor do texto */
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid transparent; /* Borda transparente para manter o layout consistente */
+    overflow: hidden; /* Garante que nada ultrapasse os limites do card */
+    height: auto;
+    box-sizing: border-box;
+}
+
+.jogo-produtos:hover {
+    transform: translateY(-8px); /* Eleva o card para cima */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra externa projetada */
+    border-color: #0056b3; /* Borda azul combinando com a sidebar */
+}
+
+.jogo-produtos.escondido {
+    opacity: 0; /* Torna o card invisível */
+    transform: scale(0.9); /* Reduz ligeiramente o tamanho do card */
+    pointer-events: none; /* Impede interação com o card */
+}
+
+.jogo-produtos img {
+    width: 100%;
+    height: 180px; /* Altura fixa para manter consistência */
+    object-fit: cover; /* Garante que a imagem preencha o espaço do card sem distorcer */
+    border-radius: 6px;
+    margin-bottom: 2px;
+    transition: transform 0.3s ease;
+}
+
+.jogo-produtos:hover img {
+    transform: scale(1.05); /* Leve zoom na imagem ao passar o mouse */ 
+}
+
+.jogo-produtos h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    height: 2.4rem; /* Reserva espaço exato para até 2 linhas de texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.jogo-produtos p {
+    font-weight: bold;
+    margin-top: auto; /* IMPORTANTE: Empurra o preço e o botão para o rodapé do card */
+    margin-bottom: 12px;
+}
+
+.jogo-produtos button {
+    width: 100%;
+    background-color: #FF0000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease; /* Animação suave para hover */
+}
+
+.jogo-produtos button:hover {
+    background-color: #cc0000; /* Cor mais escura ao passar o mouse */
+}
+
+.jogo-produtos button:active {
+    transform: scale(0.95); /* Leve efeito de clique */ 
+}
+
+.jogo-produtos button.adicionado {
+    background-color: #28a745 !important; /* Verde para indicar que foi adicionado */
+}
+
+footer {
+    display: flex;
+    justify-content: space-between; /* Empurra o texto para a esquerda e os links para a direita */
+    align-items: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid #333;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+footer ul {
+    display: flex;
+    gap: 20px; /* Coloca a lista de links lado a lado */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer ul li a {
+    color: #888;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block; /* OBRIGATÓRIO para o transform funcionar */
+    transition: color 0.2s ease, transform 0.2s ease; /* Animação suave para hover */
+}
+
+footer ul li a:hover {
+    color: #ffffff; /* Cor mais clara ao passar o mouse */
+    transform: scale(1.08);
+}
+
+/* Modal de Login */
+.modal-login, #modal-login {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-login[style*="display: flex"] {
+    display: flex !important;
+}
+
+.conteudo-modal {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.conteudo-modal input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border:  1px solid #333;
+    background-color: #2A2A2A;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.conteudo-modal h2 {
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.conteudo-modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.conteudo-modal button[type="submit"] {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.conteudo-modal button[type="submit"]:hover {
+    background-color: #cc0000;
+}
+
+
+.logo-plataforma {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 1500px;
+    height: 300px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, (0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.lanc-banner {
+    position: relative; /*Faz com que o banner se torne a referencia */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 1500px;
+    height: 300px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-lanc {
+    position: absolute;
+    background-color: #28a745;
+    color: #000;
+    border-radius: 5px;
+    font-size: 24px;
+    padding: 8px 16px;
+    margin: 15px;
+    z-index: 5;
+    bottom: 15px;
+    right: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease ;
+    font-weight: bold;
+}
+
+.btn-lanc:hover {
+    background-color: #1c6e2f;
+}
