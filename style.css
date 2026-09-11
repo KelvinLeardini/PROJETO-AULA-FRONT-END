@@ -618,3 +618,31 @@ footer ul li a:hover {
 .btn-lanc:hover {
     background-color: #1c6e2f;
 }
+
+.footer-redes {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 0;
+}
+
+/* Força a redução das imagens sobrescrevendo o atributo width do HTML */
+aside .footer-redes .icones-redes a img {
+    width: 40px !important;
+    max-width: 40px !important;
+    height: 40px !important;
+    object-fit: contain;
+    display: inline-block;
+    margin-top: auto;
+}
+
+/* Garante os ícones lado a lado e centralizados */
+aside .footer-redes .icones-redes {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
