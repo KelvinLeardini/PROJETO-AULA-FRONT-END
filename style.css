@@ -4,44 +4,29 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #2A2A2A; /* Fundo escuro do site */
+    background-color: #1A1A1A; /* Fundo escuro do site */
     color: #ffffff; /* Cor do texto */
     min-height: 100vh; /* Garante que o body ocupe toda a altura da tela */
-    width: 100vw; /* Garante que o body ocupe toda a largura da tela */
+    width: 100%; /* Garante que o body ocupe toda a largura da tela */
     overflow-x: hidden; /* Evita barra de rolagem horizontal */
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8); /* Sombra suave ao redor do site */
-    min-width: 100vh;
-}
-
-
-aside .logo-link:active,
-aside .logo-link img:active,
-aside .logo-link,
-aside .logo-link:hover,
-aside .logo-link:focus {
-    border: none !important; /* Remove qualquer borda ao redor da imagem do logo */
-    outline: none !important; /* Remove o contorno ao focar na imagem do logo */
-    background-color: transparent !important; /* Garante que o fundo da imagem do logo seja transparente */
-    padding: 0 !important; /* Remove qualquer padding ao redor da imagem do logo */
-    transform: none !important; /* Garante que não haja transformação ao clicar ou focar na imagem do logo */
+    box-shadow: inset 0 0 50px rgba(5, 5, 5, 0.8); /* Sombra suave ao redor do site */
 }
 
 /* O <header> segura a busca e o botão entrar */
 header {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Dividi o header em 3 colunas: Esquerda vazia, Meio (busca) e Direita (login) */
+    align-items: center;
     align-items: center;
     justify-content: space-between; /* Distribui a busca no meio e o botão na ponta */
     width: 100%;
-    padding: 10px 20px;
-    position: relative; /* Cria a referência de posicionamento */
+    padding: 15px 0;
     box-sizing: border-box;
 }
 
 header form {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 30px;
+    grid-column: 2; /* Força o formulário de busca a ficar cravado na coluna do meio */
+    margin: 0;
 }
 
 /* CONTAINER DA BUSCA */
@@ -85,26 +70,26 @@ header .buscar input::placeholder {
 
 /* BOTÃO LOGIN*/
 header button[type="button"] {
-    margin-left: auto;
-    margin-right: 50px;
     background-color: blue;
     color: white;
     border: none; /* Remove a borda padrão do botão */
-    border-radius: 5px;
-    width: 80px;
-    height: 30px;
-    font-weight: 900;
-    transition: background-color 0.2s ease; /* Animação suave para hover */
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease; /* Animação suave para hover */
     cursor: pointer;
-    margin-bottom: 30px;
+    margin: 0;
+}
+
+header button[type="button"]:hover {
+    background-color: #003380;
 }
 
 /* Container da área do usuário no header */
 .area-usuario {
-    margin-left: auto;
-    margin-right: 30px;
-    display: flex;
-    align-items: center;
+    grid-column: 3; /* Força o login a ficar na terceira coluna */
+    justify-self: end; /* Alinha o login no final da última coluna (à direita) */
+    margin: 0;
 }
 
 /* Painel exibido quando logado */
@@ -156,10 +141,11 @@ header button:active {
 }
 
 aside {
-    width: 300px; /* Largura fixa mais enxuta */
-    min-width: 300px; /* Garante que a barra lateral não encolha */
-    max-width: 300px; /* Garante que a barra lateral não cresça */
+    width: 280px; /* Largura fixa mais enxuta */
+    min-width: 280px; /* Garante que a barra lateral não encolha */
+    max-width: 280px; /* Garante que a barra lateral não cresça */
     background-color: #08469E;
+    background: linear-gradient(180deg, #08469e 0%, #0a192f 60%, #050c1a 100%) !important;
     min-height: 100vh; /* Garante que a barra lateral ocupe toda a altura da tela */
     display: flex;
     flex-direction: column;
@@ -167,9 +153,10 @@ aside {
     padding: 20px 15px;
     flex-shrink: 0; /* Impede que a barra encolha quando a tela mudar de tamanho */
     border-radius: 0 25px 25px 0; /* Bordas arredondadas apenas no lado direito */
+    box-sizing: border-box;
 }
 
-aside img{
+aside .logo img{
     width: 220px;
     max-width: 100%;
     height: auto;
@@ -180,7 +167,7 @@ aside img{
     display: block; /* Garante que a imagem seja tratada como bloco para centralização */
 }
 
-aside img:hover {
+aside .logo img:hover {
     transform: scale(1.15); /* Leve zoom ao passar o mouse */
     transition: transform 0.5s ease; /* Animação suave para o zoom */
 }
@@ -258,7 +245,6 @@ aside hr.divisoria {
 
 .carrocel {
     position: relative;
-    background-color: #2A2A2A;
     border-radius: 15px;
     overflow: hidden;
     margin-top: 20px;
@@ -285,7 +271,7 @@ aside hr.divisoria {
     margin: 0 auto; /* Centraliza o carrossel horizontalmente */
     overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites do carrossel */
     border-radius: 15px; /* Bordas arredondadas para o carrossel */
-    cursor: pointer; /* Indica que o carrossel é interativo */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Sombra para dar profundidade ao banner */
 }
 
 /* Estilo individual de cada slide */
@@ -313,23 +299,25 @@ aside hr.divisoria {
     object-fit: cover; /* Garante que a imagem preencha o espaço do slide sem distorcer */
 }
 
+/* BOTÕES DAS SETAS (ANTERIOR / PRÓXIMO) */
 .btn-carrocel {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparante para os botões */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparante para os botões */
     color: #fff;
-    border: none;
-    font-size: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 20px;
     padding: 12px 16px;
     cursor: pointer;
     border-radius: 15px;
-    transition: background 0.3s ease; /* Animação suave para hover */
+    transition: background 0.3s ease, transform 0.2s ease; /* Animação suave para hover */
     z-index: 10; /* Garante que os botões fiquem acima das imagens do carrossel */
 }
 
 .btn-carrocel:hover {
     background: rgba(0, 86, 179, 0.9); /* Cor de fundo mais intensa ao passar o mouse */
+    transform: translateY(-50%) scale(1.1); /* Leve efeito de expansão ao passar o mouse */
 }
 
 .btn-carrocel.anterior { left: 15px; }
@@ -347,58 +335,67 @@ aside hr.divisoria {
     position: absolute;
     top: 20px;
     left: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #000;
+    background-color: #ff0000;
+    color: #fff;
     padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 1.2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
     z-index: 5; /* Garante que o título fique acima da imagem do slide */
     margin: 0; /* Remove qualquer margem padrão do h2 */   
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.produtos {
+    margin-top: 40px;
 }
 
 /* SEÇÃO DE PRODUTOS */
 .produtos h3 {
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-    font-size: 1.4rem;
-    background-color: #ff0000;
+    margin: 0 auto 30px auto; /* O 'auto' nas laterais centraliza o elemento na tela */
+    font-size: 1.5rem;
+    color: #fff;
     border-radius: 6px;
-    width: 300px;
-    height: 30px;
+    border-left: 4px solid #ff0000;
+    border-right: 4px solid #ff0000;
+    padding-left: 0 15px;
+    width: fit-content;
+    padding: 4px 25px;
 }
 
 /* Container da grade */
 .grade-produtos {
     display: grid;     /* Cria colunas responsivas que se ajustam automaticamente */
     grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
-    gap: 20px; /* Espaçamento entre os produtos */
+    gap: 30px; /* Espaçamento entre os produtos */
     justify-content: center; /* Centraliza os produtos na grade */
     align-items: start; /* OBRIGATÓRIO: impede que os cards estiquem até o final da tela */
 }
 
 /* CARD INDIVIDUAL */
 .jogo-produtos {
-    background-color: #e0e0e0; /* Fundo do card */
+    background-color: #2a2a30; /* Fundo do card */
     color: #000; /* Cor do texto */
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    border: 1px solid transparent; /* Borda transparente para manter o layout consistente */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid #404048; /* Borda transparente para manter o layout consistente */
     overflow: hidden; /* Garante que nada ultrapasse os limites do card */
+    border: 1px solid #333338;
     height: auto;
     box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .jogo-produtos:hover {
-    transform: translateY(-8px); /* Eleva o card para cima */
+    transform: translateY(-6px); /* Eleva o card para cima */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra externa projetada */
-    border-color: #0056b3; /* Borda azul combinando com a sidebar */
+    border-color: #08469e; /* Borda azul combinando com a sidebar */
 }
 
 .jogo-produtos.escondido {
@@ -409,31 +406,35 @@ aside hr.divisoria {
 
 .jogo-produtos img {
     width: 100%;
-    height: 180px; /* Altura fixa para manter consistência */
+    height: 200px; /* Altura fixa para manter consistência */
     object-fit: cover; /* Garante que a imagem preencha o espaço do card sem distorcer */
-    border-radius: 6px;
-    margin-bottom: 2px;
+    border-radius: 8px;
+    margin-bottom: 12px;
     transition: transform 0.3s ease;
 }
 
 .jogo-produtos:hover img {
-    transform: scale(1.05); /* Leve zoom na imagem ao passar o mouse */ 
+    transform: scale(1.03); /* Leve zoom na imagem ao passar o mouse */ 
 }
 
 .jogo-produtos h4 {
     font-size: 1rem;
-    margin-bottom: 8px;
-    height: 2.4rem; /* Reserva espaço exato para até 2 linhas de texto */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    color: #fff;
+    height: 2.6rem; /* Reserva espaço exato para até 2 linhas de texto */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .jogo-produtos p {
+    font-size: 1.2rem;
     font-weight: bold;
-    margin-top: auto; /* IMPORTANTE: Empurra o preço e o botão para o rodapé do card */
-    margin-bottom: 12px;
+    color: #28a745;
+    margin: auto 0 15px 0; /* Empurra o preço e o botão sempre para a base */
 }
 
 .jogo-produtos button {
@@ -441,11 +442,14 @@ aside hr.divisoria {
     background-color: #FF0000;
     color: #ffffff;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 0;
     border-radius: 6px;
     font-weight: bold;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease; /* Animação suave para hover */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .jogo-produtos button:hover {
@@ -453,7 +457,7 @@ aside hr.divisoria {
 }
 
 .jogo-produtos button:active {
-    transform: scale(0.95); /* Leve efeito de clique */ 
+    transform: scale(0.97); /* Leve efeito de clique */ 
 }
 
 .jogo-produtos button.adicionado {
