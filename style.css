@@ -405,8 +405,8 @@ aside hr.divisoria {
 }
 
 .jogo-produtos img {
-    width: auto;
-    height: 150px; /* Altura fixa para manter consistência */
+    width: 100%;
+    height: 200px; /* Altura fixa para manter consistência */
     object-fit: cover; /* Garante que a imagem preencha o espaço do card sem distorcer */
     border-radius: 8px;
     margin-bottom: 12px;
