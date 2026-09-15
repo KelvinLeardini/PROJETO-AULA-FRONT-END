@@ -693,7 +693,7 @@ aside .footer-redes .icones-redes {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
     border: 1px solid #333338;
     object-fit: cover;
@@ -719,11 +719,11 @@ aside .footer-redes .icones-redes {
 
 .blocos {
     display: grid;
-    grid-template-columns: 1.2fr 1fr; /* Coluna da capa e Coluna de compra de tamanhos iguais */
+    grid-template-columns: 1.4fr 1fr; /* Coluna da capa e Coluna de compra de tamanhos iguais */
     gap: 40px;
-    max-width: 1100px;
-    margin: 4cqh auto;
-    padding: 0 20px;
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 30px;
     align-items: start; /* Impede que uma coluna estique a outra verticalmente */
 }
 
@@ -732,7 +732,7 @@ aside .footer-redes .icones-redes {
     flex-direction: column;
     width: 100%;
     border-radius: 15px;
-    padding: 20px;
+    padding: 50px;
     gap: 40px;
 }
 
@@ -788,12 +788,13 @@ aside .footer-redes .icones-redes {
     background-color: transparent;
     color: #ffffff;
     border: 1px solid #ff0000;
-    padding: 14px 0;
+    padding: 10px 12px;
     border-radius: 6px;
     font-weight: bold;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .bloco-lateral .desejo-btn:hover {
