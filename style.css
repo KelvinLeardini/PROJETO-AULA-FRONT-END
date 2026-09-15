@@ -591,36 +591,48 @@ footer ul li a:hover {
 
 .lanc-banner {
     position: relative; /*Faz com que o banner se torne a referencia */
-    display: flex;
-    align-items: center;
+    width: 100%;
+    height: 450px;
+    margin: 0 auto 30px auto; /* Centraliza o banner na página e dá espaço na base */
+    border-radius: 12px;
     overflow: hidden;
-    width: 1500px;
-    height: 300px;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.lanc-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block; /* Remove pequenas lacunas em branco que imagens costumam ter no rodapé */
 }
 
 .btn-lanc {
     position: absolute;
-    background-color: #28a745;
-    color: #000;
-    border-radius: 5px;
-    font-size: 24px;
-    padding: 8px 16px;
-    margin: 15px;
-    z-index: 5;
-    bottom: 15px;
-    right: 15px;
+    bottom: 25px;
+    right: 25px;
+
+    background-color: #ff0000;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 6px;
+
+    font-weight: 700 !important;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    display: inline-block;
     border: none;
     cursor: pointer;
-    transition: background 0.3s ease ;
-    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-lanc:hover {
-    background-color: #1c6e2f;
+    background-color: #cc0000;
+    transform: scale(1.05); /* Leve efeito de expansão ao passar o mouse */
 }
 
 .footer-redes {
@@ -655,7 +667,6 @@ aside .footer-redes .icones-redes {
 
 .bloco-1 {
     position: relative;
-    background-color: #ffffff;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -663,7 +674,8 @@ aside .footer-redes .icones-redes {
     width: 60%;
     min-width: 1000px;
     height: 800px;
-    padding: 20px; /* Garante margem interna na caixa branca */
+    padding: 0; /* Garante margem interna na caixa branca */
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -672,12 +684,18 @@ aside .footer-redes .icones-redes {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
 }
 
 .bloco-1 .jogo img {
     width: 100%;
     height: auto;
-    border-radius: 25px;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    border: 1px solid #333338;
     object-fit: cover;
 }
 
@@ -690,101 +708,127 @@ aside .footer-redes .icones-redes {
     margin-top: -10px;
 }
 
-.bloco-lateral {
-    position: relative;
-    width: 100%;
-    height: 360px;
-    background-color: #fff;
-    border-radius: 15px;
-    margin-bottom: 80px;
-    margin-top: -20px;
-}
-
 .bloco-lateral-2 {
     position: relative;
-    width: 100%;
-    height: 360px;
-    background-color: #fff;
-    border-radius: 15px;
-    margin-bottom: 30px;
+    background-color: #2a2a30;
+    border: 1px solid #404048;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    margin-bottom: 20px;
 }
 
 .blocos {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    padding: 20px;
-    align-items: flex-start;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Coluna da capa e Coluna de compra de tamanhos iguais */
+    gap: 40px;
+    max-width: 1100px;
+    margin: 4cqh auto;
+    padding: 0 20px;
+    align-items: start; /* Impede que uma coluna estique a outra verticalmente */
 }
 
 .coluna-direita {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     border-radius: 15px;
     padding: 20px;
+    gap: 40px;
 }
 
 .bloco-lateral h2 {
-    display: flex;
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    gap: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 40px;
-    color: #000;
-    font-size: 50px;
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
 }
 
-.bloco-lateral .btns-jogo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.bloco-lateral .comprar-btn {
-    display: flex;
-    position: absolute;
-    bottom: 15px;
-    left: 45px;
-    cursor: pointer;
-    border: none;
+.tag-plataforma {
+    display: inline-block;
+    background-color: #08469e;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
     font-weight: bold;
-    color: #000;
-    background-color: #28a745;
-    border-radius: 15px;
-    width: 180px;
-    height: 50px;
-    font-size: 20px;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s ease;
+    margin-bottom: 15px;
 }
 
-.bloco-lateral .comprar-btn:hover {
-    background-color: #1c6e2f;
-}
-
-.bloco-lateral .desejo-btn {
-    display: flex;
-    position: absolute;
-    bottom: 15px;
-    right: 45px;
-    cursor: pointer;
-    border: none;
+.preco-jogo {
+    color: #28a745;
+    font-size: 2.2rem;
     font-weight: bold;
-    color: #000;
+    margin: 15px 0;
+}
+
+.btns-jogo {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.comprar-btn {
+    flex: 2; /* Faz o botão de comprar ser mais largo */
     background-color: #ff0000;
-    border-radius: 15px;
-    width: 180px;
-    height: 50px;
-    font-size: 20px;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s ease;
+    color: #fff;
+    border: none;
+    padding: 14px 0;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.comprar-btn:hover {
+    background-color: #cc0000;;
+}
+
+.desejo-btn {
+    flex: 1; /* Botão menor de apoio */
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ff0000;
+    padding: 14px 0;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .bloco-lateral .desejo-btn:hover {
-    background-color: #cc0000;
+    background-color: rgba(255, 0, 0, 0.1);;
+}
+
+.bloco-lateral-2 h4 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.bloco-lateral-2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bloco-lateral-2 li {
+    color: #cccccc;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.jogo {
+    background-color: white; /* Ou #fff */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.bloco-lateral, .bloco-lateral-2 {
+    background-color: #2a2a30; /* Fundo grafite elegante para destacar do fundo do site */
+    border: 1px solid #404048; /* Borda bem definida */
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
 }
