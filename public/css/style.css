@@ -347,7 +347,7 @@ aside hr.divisoria {
 }
 
 .produtos {
-    margin-top: 40px;
+    margin-top: 0;
 }
 
 /* SEÇÃO DE PRODUTOS */
@@ -575,28 +575,19 @@ footer ul li a:hover {
 }
 
 
-.logo-plataforma {
+.logo-plataforma, .lanc-banner {
     display: flex;
     align-items: center;
     overflow: hidden;
-    width: 1500px;
-    height: 300px;
+    width: 100%;
+    max-width: 1500px;
+    height: 350px;
+    aspect-ratio: 21 / 9;
     border-radius: 15px;
-    margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(to bottom, (0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
-}
-
-.lanc-banner {
-    position: relative; /*Faz com que o banner se torne a referencia */
-    width: 100%;
-    height: 450px;
-    margin: 0 auto 30px auto; /* Centraliza o banner na página e dá espaço na base */
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .lanc-banner img {
@@ -663,6 +654,38 @@ aside .footer-redes .icones-redes {
     gap: 15px;
 }
 
+.btn-hamburguer {
+    display: none;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    background-color: #08469e !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    width: 38px !important;
+    height: 38px !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 10px 8px !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-hamburguer:hover {
+    background-color: #063578; /* Fica ligeiramente mais escuro ao passar o rato */
+    transform: scale(1.03);
+}
+
+.btn-hamburguer span {
+    display: block !important;
+    width: 100% !important;
+    height: 2px !important;
+    background-color: #ffffff !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+    
+}
+
 /* ---------- PAGINA DE JOGOS -------------*/
 
 .bloco-1 {
@@ -671,9 +694,7 @@ aside .footer-redes .icones-redes {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    width: 60%;
-    min-width: 1000px;
-    height: 800px;
+    height: 100%;
     padding: 0; /* Garante margem interna na caixa branca */
     margin: 0;
     box-sizing: border-box;
@@ -691,12 +712,12 @@ aside .footer-redes .icones-redes {
 
 .bloco-1 .jogo img {
     width: 100%;
-    height: auto;
-    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
     border: 1px solid #333338;
-    object-fit: cover;
+    display: block;
 }
 
 .bloco-1 .jogo h2 {
@@ -719,7 +740,7 @@ aside .footer-redes .icones-redes {
 
 .blocos {
     display: grid;
-    grid-template-columns: 1.4fr 1fr; /* Coluna da capa e Coluna de compra de tamanhos iguais */
+    grid-template-columns: 1.55fr 1fr; /* Coluna da capa e Coluna de compra de tamanhos iguais */
     gap: 40px;
     max-width: 1300px;
     margin: 40px auto;
@@ -732,8 +753,8 @@ aside .footer-redes .icones-redes {
     flex-direction: column;
     width: 100%;
     border-radius: 15px;
-    padding: 50px;
-    gap: 40px;
+    padding: 0;
+    gap: 20px;
 }
 
 .bloco-lateral h2 {
@@ -832,4 +853,94 @@ aside .footer-redes .icones-redes {
     padding: 24px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
+}
+
+
+
+/* ==========================================
+   RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS
+   ========================================== */
+
+/* Telas de até 768px (Tablets e Celulares) */
+@media (max-width: 768px) {
+
+    /* Transforma as 2 colunas da página de produto em 1 coluna única */
+    .blocos {
+        grid-template-columns: 1fr; /* Agora tudo fica empilhado em uma coluna */
+        gap: 20px;
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+
+    /* Ajusta os botões de comprar/favoritar para não quebrarem o texto */
+    .btns-jogo {
+        flex-direction: column; /* Em telas muito pequenas, empilha os botões */
+    }
+
+    .comprar-btn, .desejo-btn {
+        width: 100%; /* Cada botão ocupa a largura total da caixa */
+    }
+
+    .btn-hamburguer {
+        display: flex;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1002;
+        transition: left 0.5s ease !important;
+    }
+
+    aside {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.5s ease;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    }
+
+    aside.ativo {
+        left: 0; /* Puxa o menu de volta para a tela */
+    }
+
+    body:has(aside.ativo) .btn-hamburguer,
+    aside.ativo ~ header .btn-hamburguer {
+        left: 200px; /* Coloca o botão perfeitamente integrado no canto do menu azul */
+        background-color: transparent !important; /* Deixa o fundo transparente para fundir com o azul do menu */
+        border: none !important;
+        box-shadow: none;
+    }
+
+    .carrocel-container {
+        height: auto !important;
+        aspect-ratio: 16 / 9;
+        width: 100%;
+    }
+
+    .btn-carrocel {
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+
+    .carrocel-container .slide h2 {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        top: 10px;
+        left: 10px;
+    }
+
+    .logo-plataforma, .lanc-banner {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .logo-plataforma img, .lanc-banner img {
+        object-fit: cover !important;
+        object-position: center center !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
 }

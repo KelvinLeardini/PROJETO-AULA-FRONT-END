@@ -168,3 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicialização
     atualizarEstadoLogin();
 });
+
+// Seleciona os elementos do DOM
+const btnHamburguer = document.getElementById('btn-hamburguer');
+const menuLateral = document.querySelector('aside');
+
+// Adiciona o evento de clique
+if (btnHamburguer && menuLateral) {
+    btnHamburguer.addEventListener('click', () => {
+        menuLateral.classList.toggle('ativo');
+    });
+}
