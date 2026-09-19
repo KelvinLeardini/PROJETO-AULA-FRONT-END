@@ -1,0 +1,26 @@
+{
+  "name": "projeto-aula-front-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KelvinLeardini/PROJETO-AULA-FRONT-END.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KelvinLeardini/PROJETO-AULA-FRONT-END/issues"
+  },
+  "homepage": "https://github.com/KelvinLeardini/PROJETO-AULA-FRONT-END#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
