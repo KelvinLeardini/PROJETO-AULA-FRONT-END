@@ -397,6 +397,20 @@ aside hr.divisoria {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
+.jogo-produtos button {
+    display: flex;
+    align-items: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Tamanho e cor do ícone SVG gerado */
+.jogo-produtos button .lucide {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+}
+
 .jogo-produtos:hover {
     transform: translateY(-6px); /* Eleva o card para cima */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra externa projetada */
@@ -827,6 +841,17 @@ aside .footer-redes .icones-redes {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.comprar-btn .lucide {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.5;
 }
 
 .comprar-btn:hover {

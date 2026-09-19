@@ -1,3 +1,13 @@
+// Aguarda o HTML carregar completamente para renderizar os ícones
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Verifica se a biblioteca Lucide carregou antes de chamar
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+});
+
 const inputBusca = document.querySelector('.buscar input');
 const cardsJogos = document.querySelectorAll('.jogo-produtos');
 
@@ -42,8 +52,13 @@ botoesComprar.forEach(botao => {
 
         // Volta ao estado original depois de 1.5 segundo
         setTimeout(() => {
-            botao.textContent = 'COMPRAR';
+            botao.innerHTML = '<i data-lucide="shopping-cart"></i> COMPRAR';
             botao.classList.remove('adicionado');
+
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
         }, 1500);
     });
 });
