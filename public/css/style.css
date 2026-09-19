@@ -913,8 +913,7 @@ aside .footer-redes .icones-redes {
     .btn-hamburguer {
         display: flex;
         position: relative;
-        top: auto;
-        left: auto;
+        left: 0;
         flex-shrink: 0;
         z-index: 1002;
         transition: left 0.5s ease !important;
