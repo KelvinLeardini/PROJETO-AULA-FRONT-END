@@ -17,3 +17,62 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.listen(3000, () => {
   console.log('Servidor rodando em http://localhost:3000');
 });
+
+//---------------------------------------------------- API PARA BACKEND -------------------
+
+const fs = require('fs');
+
+const PORT = process.env.PORT || 3000;
+
+// Middleware para ler JSON no corpo das requisições e servir arquivos estáticos
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Funções auxiliares para ler e salvar JSON
+const lerArquivo = (caminho) => JSON.parse(fs.readFileSync(caminho, 'utf-8'));
+const salvarArquivo = (caminho, dados) => fs.writeFileSync(caminho, JSON.stringify(dados, null, 2));
+
+const caminhoUsuarios = path.join(__dirname, 'dados', 'usuarios.json');
+const caminhoJogos = path.join(__dirname, 'dados', 'jogos.json');
+
+// --- ROTA DE LOGIN COM ROLES ---
+app.post('/api/login', (req, res) => {
+    const { email, senha } = req.body;
+    const usuarios = lerArquivo(caminhoUsuarios);
+
+    const usuarioEncontrado = usuarios.find(u => u.email === email && u.senha === senha);
+
+    if (usuarioEncontrado) {
+        // Retorna os dados do usuário sem a senha, incluindo o tipo de acesso (role)
+        const { senha, ...dadosUsuario } = usuarioEncontrado;
+        return res.json({ sucesso: true, usuario: dadosUsuario });
+    }
+
+    return res.status(401).json({ sucesso: false, mensagem: 'E-mail ou senha inválidos' });
+});
+
+// --- ROTAS PARA OS JOGOS ---
+app.get('/api/jogos', (req, res) => {
+    const jogos = lerArquivo(caminhoJogos);
+    res.json(jogos);
+});
+
+app.post('/api/jogos', (req, res) => {
+    const jogos = lerArquivo(caminhoJogos);
+    const novoJogo = { id: Date.now().toString(), ...req.body };
+    jogos.push(novoJogo);
+    salvarArquivo(caminhoJogos, jogos);
+    res.status(201).json({ sucesso: true, jogo: novoJogo });
+});
+
+app.delete('/api/jogos/:id', (req, res) => {
+    const { id } = req.params;
+    let jogos = lerArquivo(caminhoJogos);
+    jogos = jogos.filter(j => j.id !== id);
+    salvarArquivo(caminhoJogos, jogos);
+    res.json({ sucesso: true });
+});
+
+app.listen(PORT, () => {
+    console.log(`Servidor Keep Keys rodando em http://localhost:${PORT}`);
+});

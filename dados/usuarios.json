@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nome": "Cliente",
+    "email": "cliente@keepkeys.com",
+    "senha": "123",
+    "role": "cliente"
+  },
+  {
+    "id": 2,
+    "nome": "Administrador",
+    "email": "admin@keepkeys.com",
+    "senha": "123",
+    "role": "admin"
+  }
+]
