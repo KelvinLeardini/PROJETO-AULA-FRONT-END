@@ -76,3 +76,4 @@ app.delete('/api/jogos/:id', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor Keep Keys rodando em http://localhost:${PORT}`);
 });
+
