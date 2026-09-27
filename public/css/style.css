@@ -913,6 +913,22 @@ aside .footer-redes .icones-redes {
     box-sizing: border-box;
 }
 
+/* Estilo do Botão do Painel Admin */
+.btn-admin {
+    background-color: #ff9900;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: background-color 0.2s ease; /* Deixa a troca de cor suave */
+}
+
+.btn-admin:hover {
+    background-color: #cc7a00; /* Um tom de laranja um pouco mais escuro */
+}
+
 
 
 
