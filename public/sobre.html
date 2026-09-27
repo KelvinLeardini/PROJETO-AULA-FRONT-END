@@ -2,11 +2,29 @@
     body{
         background-color: #000000;
     }
-    
-    
-    
-    
-    
+   
+    .kk-btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #0044ff; /* Azul característico do seu site */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+    border: 1px solid transparent;
+}
+
+.kk-btn-voltar:hover {
+    background-color: #0033cc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 68, 255, 0.4);
+}
     
     
     /* Container principal com o tema escuro do site */
@@ -171,4 +189,10 @@
             </div>
         </div>
     </div>
+    <!-- Botão para voltar ao Dashboard -->
+        <div style="text-align: center;">
+            <a href="/" class="kk-btn-voltar">
+                <i class="fa-solid fa-house"></i> Voltar para o Início
+            </a>
+        </div>
 </div>
