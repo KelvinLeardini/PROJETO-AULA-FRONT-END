@@ -4,140 +4,292 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nós - KeepKeys</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Estilos base */
+        /* Reset e Fontes */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f8f9fa; /* Fundo cinza bem claro/branco */
-            color: #333333;
-            line-height: 1.6;
-        }
-
-        /* Cabeçalho */
-        .hero {
-            background-color: #0d47a1; /* Azul escuro */
+            background-color: #121212; /* Fundo escuro do site */
             color: #ffffff;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Barra Lateral (Sidebar) simulando a da imagem */
+        .sidebar {
+            width: 250px;
+            background-color: #0b1d3a; /* Azul escuro da sidebar */
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .logo {
             text-align: center;
-            padding: 4rem 2rem;
+            margin-bottom: 3rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e0b0ff; /* Simulando o dourado/roxo do seu logo */
         }
 
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .logo img {
+            width: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
-        /* Container Principal */
-        .container {
-            max-width: 900px;
-            margin: -2rem auto 3rem auto;
-            background: #ffffff;
-            padding: 3rem;
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            color: #a0aec0;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
-        /* Seções de Texto */
-        .secao-sobre {
-            margin-bottom: 2.5rem;
+        .menu-item:hover, .menu-item.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
         }
 
-        .secao-sobre h2 {
-            color: #1976d2; /* Azul médio */
+        .menu-item i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .divisor {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 1rem 0;
+        }
+
+        /* Área de Conteúdo Principal */
+        .main-content {
+            margin-left: 250px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Superior */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background-color: #121212;
+        }
+
+        .search-bar {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            color: #fff;
+            width: 400px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            margin-left: 10px;
+            width: 100%;
+            outline: none;
+        }
+
+        .btn-entrar {
+            background-color: #0044ff; /* Azul do botão Entrar */
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-entrar:hover {
+            background-color: #0033cc;
+        }
+
+        /* Container do Sobre Nós */
+        .about-container {
+            padding: 2rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(90deg, #1e1e1e, #0b1d3a, #1e1e1e);
+            padding: 4rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .about-header h1 {
+            font-size: 3rem;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .about-header p {
+            color: #a0aec0;
+            font-size: 1.2rem;
+        }
+
+        /* Grid de Conteúdo */
+        .content-section {
+            background-color: #1e1e1e; /* Card escuro */
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid #2a2a2a;
+        }
+
+        .content-section h2 {
+            color: #4da6ff; /* Azul destaque */
+            margin-bottom: 1.5rem;
             font-size: 1.8rem;
-            border-bottom: 2px solid #e3f2fd;
-            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
         }
 
-        .secao-sobre p {
+        .content-section h2 i {
+            margin-right: 15px;
+        }
+
+        .content-section p {
+            color: #cbd5e0;
+            line-height: 1.8;
             margin-bottom: 1rem;
-            text-align: justify;
+            font-size: 1.1rem;
         }
 
-        /* Valores (Grid) */
-        .valores-grid {
+        /* Cards de Diferenciais */
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .valor-card {
-            background-color: #e3f2fd; /* Azul muito claro */
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid #1976d2;
-        }
-
-        .valor-card h3 {
-            color: #0d47a1;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Rodapé */
-        footer {
-            text-align: center;
+        .feature-card {
+            background-color: #252525;
             padding: 2rem;
-            background-color: #333;
-            color: #fff;
-            margin-top: auto;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border-top: 3px solid #0044ff;
         }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background-color: #2a2a2a;
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #4da6ff;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #a0aec0;
+        }
+
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <h1>Sobre o KeepKeys</h1>
-        <p>Simplificando a forma como você organiza e protege o que importa.</p>
-    </header>
-
-    <main class="container">
-        <section class="secao-sobre">
-            <h2>Nossa História</h2>
-            <p>O KeepKeys nasceu da necessidade de criar uma solução simples, segura e eficiente. Percebemos que, com a rotina cada vez mais digital, gerenciar nossas ferramentas precisava ser algo descomplicado.</p>
-            <p>Desde o nosso início, focamos em desenvolver um ambiente limpo e direto ao ponto, onde a tecnologia trabalha a favor da sua tranquilidade, sem barreiras ou distrações.</p>
-        </section>
-
-        <section class="secao-sobre">
-            <h2>Nossa Missão</h2>
-            <p>Fornecer uma plataforma confiável e acessível, garantindo que nossos usuários tenham sempre o controle em suas mãos, com máxima segurança e performance.</p>
-        </section>
-
-        <section class="secao-sobre">
-            <h2>Nossos Valores</h2>
-            <div class="valores-grid">
-                <div class="valor-card">
-                    <h3>Segurança</h3>
-                    <p>A proteção dos seus dados e informações é a base de tudo o que construímos.</p>
-                </div>
-                <div class="valor-card">
-                    <h3>Simplicidade</h3>
-                    <p>Acreditamos que as melhores soluções não precisam ser complexas ou difíceis de usar.</p>
-                </div>
-                <div class="valor-card">
-                    <h3>Inovação</h3>
-                    <p>Buscamos sempre melhorar nosso código e nossa lógica para entregar a melhor experiência.</p>
-                </div>
+    <!-- Sidebar idêntica a da imagem -->
+    <aside class="sidebar">
+        <div class="logo">
+            <!-- Coloque o caminho da sua logo aqui -->
+            <div style="width: 60px; height: 60px; border: 2px solid #a89050; border-radius: 50%; margin: 0 auto 10px auto; display: flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-key" style="color: #a89050;"></i>
             </div>
-        </section>
-    </main>
+            KEEP KEYS
+        </div>
+        
+        <a href="#" class="menu-item"><i class="fa-solid fa-rocket"></i> Lançamentos</a>
+        <a href="#" class="menu-item"><i class="fa-solid fa-tag"></i> Promoções</a>
+        
+        <div class="divisor"></div>
+        
+        <a href="#" class="menu-item"><i class="fa-brands fa-playstation"></i> Playstation</a>
+        <a href="#" class="menu-item"><i class="fa-brands fa-xbox"></i> Xbox</a>
+        <a href="#" class="menu-item"><i class="fa-brands fa-steam"></i> Steam</a>
+    </aside>
 
-    <footer>
-        <p>&copy; 2026 KeepKeys. Todos os direitos reservados.</p>
-    </footer>
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Header / Topbar -->
+        <header class="top-header">
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Buscar jogos">
+            </div>
+            <a href="#" class="btn-entrar">Entrar</a>
+        </header>
+
+        <!-- Seção Sobre Nós -->
+        <div class="about-container">
+            <div class="about-header">
+                <h1>Sobre a KeepKeys</h1>
+                <p>O seu portal definitivo para os melhores jogos, pelo melhor preço.</p>
+            </div>
+
+            <section class="content-section">
+                <h2><i class="fa-solid fa-gamepad"></i> Quem Somos</h2>
+                <p>A <strong>KeepKeys</strong> nasceu da paixão pelos videogames. Sabemos o quanto é frustrante querer jogar aquele lançamento aguardado e esbarrar em preços absurdos ou plataformas complicadas.</p>
+                <p>Nossa missão é conectar gamers às suas próximas aventuras de forma rápida, segura e totalmente digital. Seja você um caçador de platinas no Playstation, um fã do GamePass no Xbox ou um colecionador da Steam, nós temos a chave (Key) para a sua diversão.</p>
+            </section>
+
+            <section class="content-section">
+                <h2><i class="fa-solid fa-shield-halved"></i> Por que escolher a KeepKeys?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h3>Entrega Imediata</h3>
+                        <p>Comprou, ativou, jogou. Nosso sistema envia a sua chave digital em segundos após a confirmação do pagamento.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fa-solid fa-lock"></i>
+                        <h3>Compra 100% Segura</h3>
+                        <p>Trabalhamos apenas com chaves oficiais e garantimos a segurança total dos seus dados durante a transação.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fa-solid fa-headset"></i>
+                        <h3>Suporte Gamer</h3>
+                        <p>Nossa equipe joga o que você joga. Entendemos suas dúvidas e estamos prontos para ajudar na ativação do seu jogo.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 
 </body>
 </html>
