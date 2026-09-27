@@ -293,3 +293,173 @@ if (btnHamburguer && menuLateral) {
         menuLateral.classList.toggle('ativo');
     });
 }
+
+// Exemplo para o botão de comprar não acionar o link do elemento pai
+document.querySelectorAll('.jogo-produtos button').forEach(botao => {
+    botao.addEventListener('click', (evento) => {
+        evento.stopPropagation(); // Impede que o clique suba para a tag <a> do card
+        evento.preventDefault();  // Evita comportamentos indesejados de link
+        
+        // A sua lógica atual de adicionar ao carrinho entra aqui:
+        // ...
+    });
+});
+
+// ==========================================
+//   LÓGICA DO CARRINHO DE COMPRAS
+// ==========================================
+
+let carrinho = JSON.parse(localStorage.getItem('keepkeys_carrinho')) || [];
+
+document.addEventListener('DOMContentLoaded', () => {
+    inicializarCarrinho();
+    atualizarContadorCarrinho();
+    configurarBotoesComprar();
+});
+
+function inicializarCarrinho() {
+    const modalCarrinho = document.getElementById('modal-carrinho');
+    const btnAbrir = document.getElementById('btn-abrir-carrinho');
+    const btnFechar = document.getElementById('fechar-carrinho');
+
+    if (!modalCarrinho) return;
+
+    // Garante que o modal comece totalmente oculto ao carregar a página
+    modalCarrinho.style.display = 'none';
+    modalCarrinho.classList.remove('ativo');
+
+    if (btnAbrir) {
+        btnAbrir.addEventListener('click', () => {
+            renderizarCarrinho();
+            modalCarrinho.style.display = 'flex';
+            setTimeout(() => {
+                modalCarrinho.classList.add('ativo');
+            }, 10);
+        });
+    }
+
+    const fecharCarrinhoAnimado = () => {
+        modalCarrinho.classList.remove('ativo');
+        setTimeout(() => {
+            modalCarrinho.style.display = 'none';
+        }, 350);
+    };
+
+    if (btnFechar) {
+        btnFechar.addEventListener('click', fecharCarrinhoAnimado);
+    }
+
+    modalCarrinho.addEventListener('click', (e) => {
+        if (e.target === modalCarrinho) {
+            fecharCarrinhoAnimado();
+        }
+    });
+}
+
+function configurarBotoesComprar() {
+    document.querySelectorAll('.jogo-produtos button').forEach((botao) => {
+        botao.addEventListener('click', (evento) => {
+            evento.stopPropagation();
+            evento.preventDefault();
+
+            // Verifica se o usuário está logado (pode usar a mesma chave que o admin ou o login usam)
+            const usuarioLogado = localStorage.getItem('usuarioLogado'); // ou 'usuarioRole', ajuste conforme a chave do seu login
+
+            if (!usuarioLogado) {
+                alert('Você precisa estar logado para adicionar itens ao carrinho!');
+                // Opcional: Redirecionar para a página de login, se houver
+                // window.location.href = 'login.html'; 
+                return;
+            }
+
+            // Se estiver logado, continua a lógica normal de adicionar ao carrinho
+            const card = botao.closest('.jogo-produtos');
+            if (!card) return;
+
+            const tituloEl = card.querySelector('h4');
+            const precoEl = card.querySelector('p');
+            const imagemEl = card.querySelector('img');
+
+            if (tituloEl && precoEl && imagemEl) {
+                const produto = {
+                    titulo: tituloEl.innerText,
+                    preco: precoEl.innerText,
+                    imagem: imagemEl.getAttribute('src')
+                };
+
+                adicionarAoCarrinho(produto);
+
+            }
+        });
+    });
+}
+
+function adicionarAoCarrinho(produto) {
+    carrinho.push(produto);
+    salvarEAtualizar();
+}
+
+function removerDoCarrinho(index) {
+    carrinho.splice(index, 1);
+    salvarEAtualizar();
+    renderizarCarrinho();
+}
+
+function salvarEAtualizar() {
+    localStorage.setItem('keepkeys_carrinho', JSON.stringify(carrinho));
+    atualizarContadorCarrinho();
+}
+
+function atualizarContadorCarrinho() {
+    const contador = document.getElementById('contador-carrinho');
+    if (contador) {
+        contador.innerText = carrinho.length;
+    }
+}
+
+function renderizarCarrinho() {
+    const listaItens = document.getElementById('lista-itens-carrinho');
+    const valorTotal = document.getElementById('valor-total-carrinho');
+
+    if (!listaItens) return;
+
+    listaItens.innerHTML = '';
+
+    if (carrinho.length === 0) {
+        listaItens.innerHTML = '<p style="text-align: center; color: #888; margin-top: 30px;">O seu carrinho está vazio.</p>';
+        if (valorTotal) valorTotal.innerText = 'R$ 0,00';
+        return;
+    }
+
+    let total = 0;
+
+    carrinho.forEach((item, index) => {
+        let precoNumerico = parseFloat(
+            item.preco.replace('R$', '').replace('.', '').replace(',', '.').trim()
+        ) || 0;
+
+        total += precoNumerico;
+
+        const divItem = document.createElement('div');
+        divItem.className = 'item-carrinho';
+        divItem.innerHTML = `
+            <img src="${item.imagem}" alt="${item.titulo}">
+            <div class="detalhes-item">
+                <h4>${item.titulo}</h4>
+                <p class="preco-item">${item.preco}</p>
+            </div>
+            <button type="button" class="btn-remover-item" onclick="removerDoCarrinho(${index})">
+                <i data-lucide="trash-2"></i>
+            </button>
+        `;
+        listaItens.appendChild(divItem);
+    });
+
+    if (valorTotal) {
+        valorTotal.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+}

@@ -17,7 +17,7 @@
         <nav>
             <ul>
                 <li><a href="/lancamentos.html">Lançamentos</a></li>
-                <li><a href="#">Promoções</a></li>
+                <li><a href="/promocoes.htm">Promoções</a></li>
 
                 <!-- Linha Divisória -->
                 <hr class="divisoria">
@@ -86,6 +86,11 @@
                 <button type="button" id="btn-entrar-header">Entrar</button>
 
                 <div id="painel-usuario" class="painel-usuario" style="display: none;">
+
+                    <button type="button" id="btn-abrir-carrinho" class="btn-carrinho-icone" aria-label="Abrir Carrinho">
+                        <i data-lucide="shopping-cart"></i>
+                        <span id="contador-carrinho" class="contador-badge">0</span>
+                    </button>
 
                     <!-- Adicione isso no seu header, próximo aos botões de usuário -->
                     <a href="/admin.html" id="btn-admin-header" class="btn-admin" style="display: none;">
@@ -211,6 +216,38 @@
             </ul>
         </footer>
 
+    </div>
+
+    <!-- Modal / Gaveta do Carrinho de Compras -->
+    <div id="modal-carrinho" class="modal-carrinho">
+        <div class="conteudo-carrinho">
+            <div class="cabecalho-carrinho">
+                <h3><i data-lucide="shopping-bag"></i> Seu Carrinho</h3>
+                <span id="fechar-carrinho" class="fechar-carrinho">&times;</span>
+            </div>
+
+            <!-- Lista de itens adicionados -->
+            <div class="lista-itens-carrinho" id="lista-itens-carrinho">
+                <!-- Exemplo visual de um item no carrinho para testarmos o design -->
+                <div class="item-carrinho">
+                    <img src="/imagens/control.jpg" alt="Control: Resonant">
+                    <div class="detalhes-item">
+                        <h4>Control: Resonant</h4>
+                        <p class="preco-item">R$ 149,90</p>
+                    </div>
+                    <button type="button" class="btn-remover-item"><i data-lucide="trash-2"></i></button>
+                </div>
+            </div>
+
+            <!-- Rodapé do Carrinho com Total e Botão de Checkout -->
+            <div class="rodape-carrinho">
+                <div class="total-carrinho">
+                    <span>Total:</span>
+                    <strong id="valor-total-carrinho">R$ 149,90</strong>
+                </div>
+                <button type="button" class="btn-finalizar-compra">Finalizar Compra</button>
+            </div>
+        </div>
     </div>
 
     <!-- CDN do Lucide Icons (Sempre em cima) -->

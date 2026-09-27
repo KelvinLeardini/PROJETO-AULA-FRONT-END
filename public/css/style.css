@@ -1079,6 +1079,227 @@ aside .footer-redes .icones-redes {
     flex-shrink: 0;
 }
 
+/* ==========================================
+   ESTILO DO CARRINHO DE COMPRAS
+   ========================================== */
+.modal-carrinho {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 9999;
+    justify-content: flex-end;
+    transition: background-color 0.3s ease;
+}
+
+/* Quando ativado via JS, a classe 'ativo' controla a abertura */
+.modal-carrinho.ativo {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.conteudo-carrinho {
+    background-color: #1a1a1a;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #333333;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.7);
+    color: #fff;
+    
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.modal-carrinho.ativo .conteudo-carrinho {
+    transform: translateX(0);
+}
+
+.cabecalho-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.cabecalho-carrinho h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fechar-carrinho {
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.2s;
+}
+
+.fechar-carrinho:hover {
+    color: #fff;
+}
+
+.lista-itens-carrinho {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-right: 5px;
+}
+
+/* Item individual dentro da gaveta */
+.item-carrinho {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #2a2a30;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #404048;
+}
+
+.item-carrinho img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.detalhes-item {
+    flex: 1;
+}
+
+.detalhes-item h4 {
+    font-size: 0.9rem;
+    margin: 0 0 5px 0;
+    color: #fff;
+}
+
+.preco-item {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #28a745;
+    margin: 0;
+}
+
+.btn-remover-item {
+    background: transparent;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.btn-remover-item:hover {
+    transform: scale(1.1);
+}
+
+.btn-remover-item .lucide {
+    width: 18px;
+    height: 18px;
+}
+
+/* Rodapé do Carrinho */
+.rodape-carrinho {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.total-carrinho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.total-carrinho strong {
+    color: #28a745;
+    font-size: 1.3rem;
+}
+
+.btn-finalizar-compra {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-finalizar-compra:hover {
+    background-color: #218838;
+}
+
+.btn-finalizar-compra:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================
+   BOTÃO DO CARRINHO MINIMALISTA NO HEADER
+   ========================================== */
+.btn-carrinho-icone {
+    position: relative; /* Essencial para posicionar a bolinha vermelha em relação ao ícone */
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-carrinho-icone:hover {
+    color: #08469E; /* Efeito suave ao passar o mouse */
+    transform: scale(1.1);
+}
+
+.btn-carrinho-icone .lucide {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+/* Badge / Notificação flutuante em cima do ícone */
+.contador-badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #ff0000;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    /* Garante que comece invisível ou elegante se estiver zerado (opcional) */
+}
 
 
 
@@ -1266,23 +1487,5 @@ aside .footer-redes .icones-redes {
     /* Quando a classe 'ativo' for acionada pelo JS, o menu aparece */
     #aplicativo aside.ativo {
         left: 0;
-    }
-
-    /* Mostra o botão hambúrguer no topo do admin */
-    #aplicativo .btn-hamburguer {
-        display: flex !important;
-        position: relative;
-        left: 0;
-        flex-shrink: 0;
-        z-index: 1002;
-    }
-
-    /* Integra o botão hambúrguer perfeitamente quando o menu estiver aberto */
-    body:has(#aplicativo aside.ativo) .btn-hamburguer,
-    #aplicativo aside.ativo ~ header .btn-hamburguer {
-        left: 200px;
-        background-color: transparent !important;
-        border: none !important;
-        box-shadow: none;
     }
 }
