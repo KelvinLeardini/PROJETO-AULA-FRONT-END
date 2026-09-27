@@ -688,25 +688,34 @@ footer ul li a:hover {
     align-items: center;
     gap: 10px;
     padding: 15px 0;
+    z-index: 100;
 }
 
-/* Força a redução das imagens sobrescrevendo o atributo width do HTML */
-aside .footer-redes .icones-redes a img {
-    width: 40px !important;
-    max-width: 40px !important;
-    height: 40px !important;
-    object-fit: contain;
-    display: inline-block;
-    margin-top: auto;
-}
-
-/* Garante os ícones lado a lado e centralizados */
 aside .footer-redes .icones-redes {
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 20px; /* Espaçamento ideal entre os ícones */
+}
+
+/* Estilo e cor base dos ícones */
+aside .footer-redes .icones-redes a {
+    color: #ffffff; /* Garante que os ícones fiquem brancos para contrastar com o fundo */
+    display: flex;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+aside .footer-redes .icones-redes a:hover {
+    color: #7a7979; /* Fica preto (ou pode mudar para #ff0000 se preferir vermelho) ao passar o mouse */
+    transform: scale(1.15); /* Leve zoom */
+}
+
+/* Tamanho exato e padronizado */
+aside .footer-redes .icones-redes a .lucide {
+    width: 26px;
+    height: 26px;
+    stroke-width: 1.5;
 }
 
 .btn-hamburguer {
@@ -1301,6 +1310,472 @@ aside .footer-redes .icones-redes {
     /* Garante que comece invisível ou elegante se estiver zerado (opcional) */
 }
 
+/* ==========================================
+   PÁGINA SOBRE NÓS (EQUIPE DO PROJETO)
+   ========================================== */
+.sobre-projeto {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.sobre-cabecalho {
+    text-align: center;
+    margin-bottom: 50px;
+    background-color: #2a2a30;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #404048;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.sobre-cabecalho h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.sobre-cabecalho p {
+    color: #cccccc;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.titulo-equipe {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 30px;
+    border-left: 4px solid #ff0000;
+    border-right: 4px solid #ff0000;
+    display: inline-block;
+    padding: 0 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.grade-equipe {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.membro-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333338;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.membro-card:hover {
+    transform: translateY(-8px);
+    border-color: #08469E;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.membro-card.destaque:hover {
+    border-color: #ff0000; /* Destaque visual sutil para o veterano do grupo */
+}
+
+.membro-avatar {
+    background-color: #2a2a30;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    border: 2px solid #404048;
+}
+
+.membro-avatar .lucide {
+    width: 35px;
+    height: 35px;
+    color: #fff;
+}
+
+.membro-card h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+}
+
+.tag-semestre {
+    display: inline-block;
+    background-color: #08469E;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.tag-semestre.bg-vermelho {
+    background-color: #ff0000;
+}
+
+.membro-card p {
+    color: #888;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ==========================================
+   PÁGINA DE SUPORTE
+   ========================================== */
+.suporte-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.suporte-cabecalho {
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: #2a2a30;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #404048;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.suporte-cabecalho h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.suporte-cabecalho p {
+    color: #cccccc;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.suporte-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.suporte-form-box, .suporte-info-box {
+    background-color: #1a1a1a;
+    border: 1px solid #333338;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.suporte-form-box h3, .suporte-info-box h3 {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-left: 4px solid #ff0000;
+    padding-left: 10px;
+}
+
+.form-grupo {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-grupo label {
+    color: #cccccc;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.form-grupo input, .form-grupo select, .form-grupo textarea {
+    background-color: #2a2a30;
+    border: 1px solid #404048;
+    color: #ffffff;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+.form-grupo input:focus, .form-grupo select:focus, .form-grupo textarea:focus {
+    border-color: #08469E;
+}
+
+.btn-enviar-suporte {
+    width: 100%;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-enviar-suporte:hover {
+    background-color: #cc0000;
+}
+
+.btn-enviar-suporte:active {
+    transform: scale(0.98);
+}
+
+.info-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item-contato {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #2a2a30;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #404048;
+}
+
+.item-contato .lucide {
+    color: #ff0000;
+    width: 28px;
+    height: 28px;
+}
+
+.item-contato strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.item-contato p {
+    color: #cccccc;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.faq-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background-color: #2a2a30;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #404048;
+}
+
+.faq-item strong {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.faq-item strong .lucide {
+    width: 18px;
+    height: 18px;
+    color: #08469E;
+}
+
+.faq-item p {
+    color: #cccccc;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   PÁGINA DE PAGAMENTOS
+   ========================================== */
+.pagamentos-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.pagamentos-cabecalho {
+    text-align: center;
+    margin-bottom: 50px;
+    background-color: #2a2a30;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #404048;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.pagamentos-cabecalho h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.pagamentos-cabecalho p {
+    color: #cccccc;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.metodos-pagamento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.metodo-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333338;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.metodo-card:hover {
+    transform: translateY(-8px);
+    border-color: #08469E;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.metodo-icone {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.metodo-icone .lucide {
+    width: 32px;
+    height: 32px;
+    color: #fff;
+}
+
+.pix-cor { background-color: #32bcad; } /* Cor aproximada do logo do PIX */
+.cartao-cor { background-color: #08469E; }
+.boleto-cor { background-color: #404048; }
+
+.metodo-card h3 {
+    color: #fff;
+    font-size: 1.3rem;
+    margin: 0 0 10px 0;
+}
+
+.tag-destaque {
+    display: inline-block;
+    background-color: #28a745;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.cartao-tag { background-color: #ff9900; }
+.boleto-tag { background-color: #888888; }
+
+.metodo-card p {
+    color: #cccccc;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Faz o card esticar uniformemente */
+}
+
+.metodo-vantagens {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    border-top: 1px solid #333338;
+    padding-top: 15px;
+}
+
+.metodo-vantagens li {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.metodo-vantagens li .lucide {
+    color: #28a745;
+    width: 16px;
+    height: 16px;
+}
+
+/* Banner de Segurança no Rodapé da seção */
+.seguranca-banner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(40, 167, 69, 0.1);
+    border: 1px solid #28a745;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.seguranca-icone .lucide {
+    width: 50px;
+    height: 50px;
+    color: #28a745;
+}
+
+.seguranca-texto h4 {
+    color: #28a745;
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+}
+
+.seguranca-texto p {
+    color: #cccccc;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
 
 
 
@@ -1487,5 +1962,15 @@ aside .footer-redes .icones-redes {
     /* Quando a classe 'ativo' for acionada pelo JS, o menu aparece */
     #aplicativo aside.ativo {
         left: 0;
+    }
+
+    .suporte-grid {
+        grid-template-columns: 1fr; /* Quebra para apenas 1 coluna no celular */
+    }
+
+    .seguranca-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
     }
 }

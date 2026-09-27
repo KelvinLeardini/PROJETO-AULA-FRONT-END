@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keep Keys - Sua loja gamer</title>
+    <title>Suporte - Keep Keys</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="favicon" href="/imagens/Logo-1.png" type="image/png">
 </head>
@@ -51,20 +51,17 @@
         <div class="conteudo-modal">
             <span class="fechar-modal">&times;</span>
             
-            <!-- Formulário de Login (Visível por padrão) -->
             <form id="form-login">
                 <h2>Acessar Conta</h2>
                 <input type="email" id="email" placeholder="Digite seu e-mail" required>
                 <input type="password" id="senha" placeholder="Senha" required>
                 <button type="submit">ENTRAR</button>
                 
-                <!-- Link para alternar -->
                 <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
                     Não tem uma conta? <a href="#" id="link-ir-cadastro" style="color: #ff0000;">Cadastre-se</a>
                 </p>
             </form>
 
-            <!-- Formulário de Cadastro (Escondido por padrão com display: none) -->
             <form id="form-cadastro" style="display: none;">
                 <h2>Criar Nova Conta</h2>
                 <input type="text" id="nome-cadastro" placeholder="Seu Nome" required>
@@ -72,7 +69,6 @@
                 <input type="password" id="senha-cadastro" placeholder="Sua Senha" required>
                 <button type="submit">CADASTRAR</button>
                 
-                <!-- Link para voltar -->
                 <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
                     Já tem uma conta? <a href="#" id="link-ir-login" style="color: #ff0000;">Faça login</a>
                 </p>
@@ -91,7 +87,6 @@
 
             <form action="#">
                 <div class="buscar">
-                    
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -105,13 +100,11 @@
 
                 <div id="painel-usuario" class="painel-usuario" style="display: none;">
 
-                    <!-- Botão do Carrinho minimalista (apenas ícone e badge) -->
                     <button type="button" id="btn-abrir-carrinho" class="btn-carrinho-icone" aria-label="Abrir Carrinho">
                         <i data-lucide="shopping-cart"></i>
                         <span id="contador-carrinho" class="contador-badge">0</span>
                     </button>
 
-                    <!-- Adicione isso no seu header, próximo aos botões de usuário -->
                     <a href="admin.html" id="btn-admin-header" class="btn-admin" style="display: none;">
                     Painel Admin
                     </a>
@@ -124,76 +117,97 @@
         </header>
 
         <main>
-
-            <section class="banner">
-                <a href="/jogos/ps/gta6.html"><img src="/imagens/GTA6 BANNER.png" alt="GTA 6" width="100%" class="fade-img"></a>
-            </section>
-
-
-            <section class="carrocel">
-                
-                <div class="carrocel-container">
-                    <!-- Banners -->
-                     <div class="slide ativo">
-                        <h2>LANÇAMENTOS</h2>
-                        <img src="/imagens/Resident Evil Requiem.jpg" alt="Destaque do mês." width="1000px">
-                    </div>
-
-                    <div class="slide">
-                        <img src="/imagens/TheIsle.jpg" alt="The Isle" width="1000px">
-                    </div>
-
-                    <div class="slide">
-                        <img src="/imagens/fh6.jpg" alt="Forza Horizon 6" width="1000px">
-                    </div>
+            <!-- CONTEÚDO DA PÁGINA DE SUPORTE -->
+            <section class="suporte-container">
+                <div class="suporte-cabecalho">
+                    <h2><i data-lucide="headset"></i> Central de Ajuda</h2>
+                    <p>Problemas com a sua chave? Dúvidas sobre ativação? A equipe Keep Keys está pronta para resolver.</p>
                 </div>
 
-                <!-- Botões de Navegação -->
-                 <button class="btn-carrocel anterior">&#10094;</button>
-                 <button class="btn-carrocel proximo">&#10095;</button>
+                <div class="suporte-grid">
+                    
+                    <!-- Coluna 1: Formulário de Contato -->
+                    <div class="suporte-form-box">
+                        <h3>Envie um Ticket</h3>
+                        <form id="form-suporte" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! Nossa equipe responderá em até 24 horas.'); this.reset();">
+                            
+                            <div class="form-grupo">
+                                <label for="nome-suporte">Nome completo</label>
+                                <input type="text" id="nome-suporte" placeholder="Seu nome completo" required>
+                            </div>
+                            
+                            <div class="form-grupo">
+                                <label for="email-suporte">E-mail</label>
+                                <input type="email" id="email-suporte" placeholder="E-mail vinculado à compra" required>
+                            </div>
+                            
+                            <div class="form-grupo">
+                                <label for="assunto-suporte">Assunto</label>
+                                <select id="assunto-suporte" required>
+                                    <option value="" disabled selected>Selecione um assunto...</option>
+                                    <option value="problema-chave">Problema ao ativar chave</option>
+                                    <option value="nao-recebi">Não recebi meu jogo</option>
+                                    <option value="reembolso">Solicitação de Reembolso</option>
+                                    <option value="duvida">Dúvida Geral</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-grupo">
+                                <label for="mensagem-suporte">Mensagem</label>
+                                <textarea id="mensagem-suporte" rows="5" placeholder="Descreva o seu problema detalhadamente..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-enviar-suporte"><i data-lucide="send"></i> Enviar Mensagem</button>
+                        </form>
+                    </div>
 
-            </section>
-    
-            <section class="produtos">
-                <h3>Jogos em Destaque</h3>
+                    <!-- Coluna 2: Informações e FAQ -->
+                    <div class="suporte-info-box">
+                        <h3>Canais de Atendimento</h3>
+                        
+                        <div class="info-contato">
+                            <div class="item-contato">
+                                <i data-lucide="mail"></i>
+                                <div>
+                                    <strong>E-mail</strong>
+                                    <p>suporte@keepkeys.com.br</p>
+                                </div>
+                            </div>
+                            <div class="item-contato">
+                                <i data-lucide="message-square"></i>
+                                <div>
+                                    <strong>Discord</strong>
+                                    <p>Servidor Keep Keys (Atendimento Rápido)</p>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="grade-produtos">
+                        <h3 style="margin-top: 40px;">Dúvidas Frequentes</h3>
+                        
+                        <div class="faq-lista">
+                            <div class="faq-item">
+                                <strong><i data-lucide="help-circle"></i> Como recebo minha chave?</strong>
+                                <p>Após a confirmação do pagamento, a chave do jogo será enviada para o seu e-mail e também ficará disponível no painel da sua conta.</p>
+                            </div>
+                            <div class="faq-item">
+                                <strong><i data-lucide="help-circle"></i> Posso pedir reembolso?</strong>
+                                <p>Sim. Se você comprou uma chave, não a visualizou no painel e não ativou na plataforma (Steam, Xbox, PS), tem até 7 dias para pedir reembolso.</p>
+                            </div>
+                            <div class="faq-item">
+                                <strong><i data-lucide="help-circle"></i> A ativação é global?</strong>
+                                <p>A maioria das chaves é global, porém, sempre verifique a região indicada na página do jogo antes de finalizar a compra.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <article class="jogo-produtos">
-                        <img src="/imagens/control.jpg" alt="Control: Resonant" width="200px">
-                        <h4>Control: Resonant</h4>
-                        <p>R$ 299,90</p>
-                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
-                    </article>
-
-                    <article class="jogo-produtos">
-                        <img src="/imagens/ONIMUSHA so.avif" alt="Onimusha: Way of the Sowrd" width="200px">
-                        <h4>Onimusha: Way of the Sword</h4>
-                        <p>R$ 299,00</p>
-                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
-                    </article>
-
-                    <article class="jogo-produtos">
-                        <img src="/imagens/EldenRing.png" alt="Elden Ring" width="200px">
-                        <h4>Elden Ring</h4>
-                        <p>R$ 299,90</p>
-                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
-                    </article>
-
-                    <article class="jogo-produtos">
-                        <img src="/imagens/Black MythWukong.png" alt="Black Myth: Wukong" width="200px">
-                        <h4>Black Myth: Wukong</h4>
-                        <p>R$ 229,99</p>
-                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
-                    </article>
-                </div>           
+                </div>
             </section>
         </main>
 
         <footer>
             <p>&copy; 2026 Keep Keys - Sua Loja Gamer. Todos os direitos reservados.</p>
             <ul>
-                <li><a href="#">Suporte</a></li>
+                <li><a href="suporte.html">Suporte</a></li>
                 <li><a href="sobre.html">Sobre Nós</a></li>
                 <li><a href="#">Pagamentos</a></li>
             </ul>
@@ -208,34 +222,19 @@
                 <h3><i data-lucide="shopping-bag"></i> Seu Carrinho</h3>
                 <span id="fechar-carrinho" class="fechar-carrinho">&times;</span>
             </div>
-
-            <!-- Lista de itens adicionados -->
-            <div class="lista-itens-carrinho" id="lista-itens-carrinho">
-                <!-- Exemplo visual de um item no carrinho para testarmos o design -->
-                <div class="item-carrinho">
-                    <img src="/imagens/control.jpg" alt="Control: Resonant">
-                    <div class="detalhes-item">
-                        <h4>Control: Resonant</h4>
-                        <p class="preco-item">R$ 149,90</p>
-                    </div>
-                    <button type="button" class="btn-remover-item"><i data-lucide="trash-2"></i></button>
-                </div>
-            </div>
-
-            <!-- Rodapé do Carrinho com Total e Botão de Checkout -->
+            <div class="lista-itens-carrinho" id="lista-itens-carrinho"></div>
             <div class="rodape-carrinho">
                 <div class="total-carrinho">
                     <span>Total:</span>
-                    <strong id="valor-total-carrinho">R$ 149,90</strong>
+                    <strong id="valor-total-carrinho">R$ 0,00</strong>
                 </div>
                 <button type="button" class="btn-finalizar-compra">Finalizar Compra</button>
             </div>
         </div>
     </div>
 
-    <!-- CDN do Lucide Icons (Sempre em cima) -->
+    <!-- CDN do Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Vincula o JavaScript -->
     <script src="/js/script.js"></script>
 
 </body>

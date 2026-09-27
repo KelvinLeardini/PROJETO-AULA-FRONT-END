@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keep Keys - Sua loja gamer</title>
+    <title>Pagamentos - Keep Keys</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="favicon" href="/imagens/Logo-1.png" type="image/png">
 </head>
@@ -51,20 +51,17 @@
         <div class="conteudo-modal">
             <span class="fechar-modal">&times;</span>
             
-            <!-- Formulário de Login (Visível por padrão) -->
             <form id="form-login">
                 <h2>Acessar Conta</h2>
                 <input type="email" id="email" placeholder="Digite seu e-mail" required>
                 <input type="password" id="senha" placeholder="Senha" required>
                 <button type="submit">ENTRAR</button>
                 
-                <!-- Link para alternar -->
                 <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
                     Não tem uma conta? <a href="#" id="link-ir-cadastro" style="color: #ff0000;">Cadastre-se</a>
                 </p>
             </form>
 
-            <!-- Formulário de Cadastro (Escondido por padrão com display: none) -->
             <form id="form-cadastro" style="display: none;">
                 <h2>Criar Nova Conta</h2>
                 <input type="text" id="nome-cadastro" placeholder="Seu Nome" required>
@@ -72,7 +69,6 @@
                 <input type="password" id="senha-cadastro" placeholder="Sua Senha" required>
                 <button type="submit">CADASTRAR</button>
                 
-                <!-- Link para voltar -->
                 <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
                     Já tem uma conta? <a href="#" id="link-ir-login" style="color: #ff0000;">Faça login</a>
                 </p>
@@ -91,7 +87,6 @@
 
             <form action="#">
                 <div class="buscar">
-                    
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -105,13 +100,11 @@
 
                 <div id="painel-usuario" class="painel-usuario" style="display: none;">
 
-                    <!-- Botão do Carrinho minimalista (apenas ícone e badge) -->
                     <button type="button" id="btn-abrir-carrinho" class="btn-carrinho-icone" aria-label="Abrir Carrinho">
                         <i data-lucide="shopping-cart"></i>
                         <span id="contador-carrinho" class="contador-badge">0</span>
                     </button>
 
-                    <!-- Adicione isso no seu header, próximo aos botões de usuário -->
                     <a href="admin.html" id="btn-admin-header" class="btn-admin" style="display: none;">
                     Painel Admin
                     </a>
@@ -124,78 +117,78 @@
         </header>
 
         <main>
+            <!-- CONTEÚDO DA PÁGINA DE PAGAMENTOS -->
+            <section class="pagamentos-container">
+                <div class="pagamentos-cabecalho">
+                    <h2><i data-lucide="credit-card"></i> Formas de Pagamento</h2>
+                    <p>Compre seus jogos com total segurança e comodidade. Oferecemos as melhores opções para você não perder nenhum lançamento.</p>
+                </div>
 
-            <section class="banner">
-                <a href="/jogos/ps/gta6.html"><img src="/imagens/GTA6 BANNER.png" alt="GTA 6" width="100%" class="fade-img"></a>
-            </section>
-
-
-            <section class="carrocel">
-                
-                <div class="carrocel-container">
-                    <!-- Banners -->
-                     <div class="slide ativo">
-                        <h2>LANÇAMENTOS</h2>
-                        <img src="/imagens/Resident Evil Requiem.jpg" alt="Destaque do mês." width="1000px">
+                <div class="metodos-pagamento-grid">
+                    
+                    <!-- PIX -->
+                    <div class="metodo-card">
+                        <div class="metodo-icone pix-cor">
+                            <i data-lucide="qr-code"></i>
+                        </div>
+                        <h3>PIX</h3>
+                        <span class="tag-destaque">Aprovação Imediata</span>
+                        <p>A forma mais rápida de começar a jogar. O pagamento é aprovado na hora e a chave é liberada instantaneamente no seu painel.</p>
+                        <ul class="metodo-vantagens">
+                            <li><i data-lucide="check-circle-2"></i> Liberação em segundos</li>
+                            <li><i data-lucide="check-circle-2"></i> 5% de desconto em todo o site</li>
+                        </ul>
                     </div>
 
-                    <div class="slide">
-                        <img src="/imagens/TheIsle.jpg" alt="The Isle" width="1000px">
+                    <!-- Cartão de Crédito -->
+                    <div class="metodo-card">
+                        <div class="metodo-icone cartao-cor">
+                            <i data-lucide="credit-card"></i>
+                        </div>
+                        <h3>Cartão de Crédito</h3>
+                        <span class="tag-destaque cartao-tag">Até 12x Sem Juros</span>
+                        <p>Aceitamos as principais bandeiras do mercado. Parcele suas compras e garanta aquele lançamento sem pesar no bolso.</p>
+                        <ul class="metodo-vantagens">
+                            <li><i data-lucide="check-circle-2"></i> Visa, Mastercard, Elo e Amex</li>
+                            <li><i data-lucide="check-circle-2"></i> Aprovação em até 5 minutos</li>
+                        </ul>
                     </div>
 
-                    <div class="slide">
-                        <img src="/imagens/fh6.jpg" alt="Forza Horizon 6" width="1000px">
+                    <!-- Boleto -->
+                    <div class="metodo-card">
+                        <div class="metodo-icone boleto-cor">
+                            <i data-lucide="barcode"></i>
+                        </div>
+                        <h3>Boleto Bancário</h3>
+                        <span class="tag-destaque boleto-tag">À Vista</span>
+                        <p>Prefere pagar em dinheiro? Gere um boleto e pague em qualquer banco, lotérica ou aplicativo da sua preferência.</p>
+                        <ul class="metodo-vantagens">
+                            <li><i data-lucide="check-circle-2"></i> Aprovação em 1 a 2 dias úteis</li>
+                            <li><i data-lucide="check-circle-2"></i> Segurança tradicional</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="seguranca-banner">
+                    <div class="seguranca-icone">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <div class="seguranca-texto">
+                        <h4>Compra 100% Segura</h4>
+                        <p>Nossa loja utiliza criptografia de ponta a ponta (SSL). Seus dados financeiros não são armazenados em nossos servidores e são processados pelas plataformas de pagamento mais seguras do mundo.</p>
                     </div>
                 </div>
 
-                <!-- Botões de Navegação -->
-                 <button class="btn-carrocel anterior">&#10094;</button>
-                 <button class="btn-carrocel proximo">&#10095;</button>
-
-            </section>
-    
-            <section class="produtos">
-                <h3>Jogos em Destaque</h3>
-
-                <div class="grade-produtos">
-
-                    <article class="jogo-produtos">
-                        <img src="/imagens/control.jpg" alt="Control: Resonant" width="200px">
-                        <h4>Control: Resonant</h4>
-                        <p>R$ 299,90</p>
-                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
-                    </article>
-
-                    <article class="jogo-produtos">
-                        <img src="/imagens/ONIMUSHA so.avif" alt="Onimusha: Way of the Sowrd" width="200px">
-                        <h4>Onimusha: Way of the Sword</h4>
-                        <p>R$ 299,00</p>
-                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
-                    </article>
-
-                    <article class="jogo-produtos">
-                        <img src="/imagens/EldenRing.png" alt="Elden Ring" width="200px">
-                        <h4>Elden Ring</h4>
-                        <p>R$ 299,90</p>
-                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
-                    </article>
-
-                    <article class="jogo-produtos">
-                        <img src="/imagens/Black MythWukong.png" alt="Black Myth: Wukong" width="200px">
-                        <h4>Black Myth: Wukong</h4>
-                        <p>R$ 229,99</p>
-                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
-                    </article>
-                </div>           
             </section>
         </main>
 
         <footer>
             <p>&copy; 2026 Keep Keys - Sua Loja Gamer. Todos os direitos reservados.</p>
             <ul>
-                <li><a href="#">Suporte</a></li>
+                <li><a href="suporte.html">Suporte</a></li>
                 <li><a href="sobre.html">Sobre Nós</a></li>
-                <li><a href="#">Pagamentos</a></li>
+                <li><a href="pagamentos.html">Pagamentos</a></li>
             </ul>
         </footer>
 
@@ -208,35 +201,24 @@
                 <h3><i data-lucide="shopping-bag"></i> Seu Carrinho</h3>
                 <span id="fechar-carrinho" class="fechar-carrinho">&times;</span>
             </div>
-
-            <!-- Lista de itens adicionados -->
-            <div class="lista-itens-carrinho" id="lista-itens-carrinho">
-                <!-- Exemplo visual de um item no carrinho para testarmos o design -->
-                <div class="item-carrinho">
-                    <img src="/imagens/control.jpg" alt="Control: Resonant">
-                    <div class="detalhes-item">
-                        <h4>Control: Resonant</h4>
-                        <p class="preco-item">R$ 149,90</p>
-                    </div>
-                    <button type="button" class="btn-remover-item"><i data-lucide="trash-2"></i></button>
-                </div>
-            </div>
-
-            <!-- Rodapé do Carrinho com Total e Botão de Checkout -->
+            <div class="lista-itens-carrinho" id="lista-itens-carrinho"></div>
             <div class="rodape-carrinho">
                 <div class="total-carrinho">
                     <span>Total:</span>
-                    <strong id="valor-total-carrinho">R$ 149,90</strong>
+                    <strong id="valor-total-carrinho">R$ 0,00</strong>
                 </div>
                 <button type="button" class="btn-finalizar-compra">Finalizar Compra</button>
             </div>
         </div>
     </div>
 
-    <!-- CDN do Lucide Icons (Sempre em cima) -->
+    <!-- CDN do Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Vincula o JavaScript -->
     <script src="/js/script.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
 
 </body>
 </html>
