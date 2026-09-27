@@ -126,33 +126,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnFechar = document.querySelector('.fechar-modal');
     const formLogin = document.getElementById('form-login');
 
-    // Alterna a exibição entre Entrar x Painel do Usuário
+    const linkIrCadastro = document.getElementById('link-ir-cadastro');
+    const linkIrLogin = document.getElementById('link-ir-login');
+    const formCadastro = document.getElementById('form-cadastro'); 
+    // Certifique-se de que const formLogin = document.getElementById('form-login'); também está lá em cima
+
+    // Clicou em "Cadastre-se"
+    if (linkIrCadastro) {
+        linkIrCadastro.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            formLogin.style.display = 'none';
+            formCadastro.style.display = 'block'; // Mostra o de cadastro
+        });
+    }
+
+    // Clicou em "Faça login"
+    if (linkIrLogin) {
+        linkIrLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            formCadastro.style.display = 'none';
+            formLogin.style.display = 'block'; // Mostra o de login
+        });
+    }
+
     // Alterna a exibição entre Entrar x Painel do Usuário e aplica Roles
     function atualizarEstadoLogin() {
         const estaLogado = localStorage.getItem('usuarioLogado') === 'true';
         const role = localStorage.getItem('usuarioRole'); // Pega se é admin ou cliente
-        const nome = localStorage.getItem('usuarioNome');
+        
+        // Captura o novo botão Admin
+        const btnAdmin = document.getElementById('btn-admin-header');
 
         if (estaLogado) {
-            // Esconde o botão Entrar e mostra o Painel
-            btnEntrar.style.setProperty('display', 'none', 'important');
-            painelUsuario.style.setProperty('display', 'flex', 'important');
+            if (btnEntrar) btnEntrar.style.setProperty('display', 'none', 'important');
+            if (painelUsuario) painelUsuario.style.setProperty('display', 'flex', 'important');
             
-            // Opcional: Mostra o nome do usuário no botão se tiver um span dentro dele
-            // painelUsuario.innerHTML = `<i data-lucide="user"></i> ${nome}`;
-
             // Lógica do Administrador
             if (role === 'admin') {
-                console.log("Logado como Administrador");
-                // Aqui você pode exibir um botão "Painel Admin" no header que antes estava com display: none
-                // Exemplo: document.getElementById('btn-admin-header').style.display = 'block';
+                if (btnAdmin) btnAdmin.style.setProperty('display', 'inline-block', 'important');
             } else {
-                console.log("Logado como Cliente");
+                // Se for cliente comum, garante que o botão admin fica escondido
+                if (btnAdmin) btnAdmin.style.setProperty('display', 'none', 'important');
             }
         } else {
-            // Mostra o botão Entrar e esconde o Painel completamente
-            btnEntrar.style.setProperty('display', 'inline-block', 'important');
-            painelUsuario.style.setProperty('display', 'none', 'important');
+            // Se estiver deslogado, volta tudo ao estado inicial
+            if (btnEntrar) btnEntrar.style.setProperty('display', 'inline-block', 'important');
+            if (painelUsuario) painelUsuario.style.setProperty('display', 'none', 'important');
+            if (btnAdmin) btnAdmin.style.setProperty('display', 'none', 'important');
         }
     }
 
@@ -185,29 +205,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Submissão do Formulário de Login
-    // Submissão do Formulário de Login
+// Submissão do Formulário de Login
     if (formLogin) {
         formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Pega os valores digitados (Ajuste os IDs se estiverem diferentes no seu HTML)
             const emailInput = document.getElementById('email').value;
             const senhaInput = document.getElementById('senha').value;
 
             try {
-                // Envia os dados para a API do Node.js
                 const resposta = await fetch('/api/login', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email: emailInput, senha: senhaInput })
                 });
 
                 const dados = await resposta.json();
 
                 if (dados.sucesso) {
-                    // Login real feito com sucesso! Salva o status e a ROLE (cliente ou admin)
                     localStorage.setItem('usuarioLogado', 'true');
                     localStorage.setItem('usuarioRole', dados.usuario.role);
                     localStorage.setItem('usuarioNome', dados.usuario.nome);
@@ -217,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     modal.style.display = 'none';
                     formLogin.reset();
                 } else {
-                    // Exibe a mensagem de erro vinda do backend (ex: "E-mail ou senha inválidos")
                     alert(dados.mensagem);
                 }
             } catch (erro) {
@@ -227,15 +241,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Inicialização
+    // Captura o formulário de cadastro e envia para a API
+    if (formCadastro) {
+        formCadastro.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nomeInput = document.getElementById('nome-cadastro').value;
+            const emailInput = document.getElementById('email-cadastro').value;
+            const senhaInput = document.getElementById('senha-cadastro').value;
+
+            try {
+                const resposta = await fetch('/api/cadastro', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nome: nomeInput, email: emailInput, senha: senhaInput })
+                });
+
+                const dados = await resposta.json();
+
+                if (dados.sucesso) {
+                    alert('Conta criada com sucesso!');
+                    
+                    localStorage.setItem('usuarioLogado', 'true');
+                    localStorage.setItem('usuarioRole', dados.usuario.role);
+                    localStorage.setItem('usuarioNome', dados.usuario.nome);
+                    
+                    atualizarEstadoLogin();
+
+                    modal.style.display = 'none';
+                    formCadastro.reset();
+                } else {
+                    alert(dados.mensagem);
+                }
+            } catch (erro) {
+                console.error("Erro no cadastro:", erro);
+                alert("Não foi possível conectar ao servidor.");
+            }
+        });
+    }
+
+    // Inicialização do estado visual dos botões ao carregar a página
     atualizarEstadoLogin();
 });
 
-// Seleciona os elementos do DOM
+// Seleciona os elementos do DOM (Menu Lateral)
 const btnHamburguer = document.getElementById('btn-hamburguer');
 const menuLateral = document.querySelector('aside');
 
-// Adiciona o evento de clique
 if (btnHamburguer && menuLateral) {
     btnHamburguer.addEventListener('click', () => {
         menuLateral.classList.toggle('ativo');

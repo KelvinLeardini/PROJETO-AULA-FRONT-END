@@ -51,6 +51,31 @@ app.post('/api/login', (req, res) => {
     return res.status(401).json({ sucesso: false, mensagem: 'E-mail ou senha inválidos' });
 });
 
+// --- ROTA DE CADASTRO ---
+app.post('/api/cadastro', (req, res) => {
+    const { nome, email, senha } = req.body;
+    const usuarios = lerArquivo(caminhoUsuarios);
+
+    const emailExiste = usuarios.find(u => u.email === email);
+    if (emailExiste) {
+        return res.status(400).json({ sucesso: false, mensagem: 'Este e-mail já está em uso.' });
+    }
+
+    const novoUsuario = {
+        id: Date.now(), 
+        nome,
+        email,
+        senha,
+        role: 'cliente' 
+    };
+
+    usuarios.push(novoUsuario);
+    salvarArquivo(caminhoUsuarios, usuarios);
+
+    const { senha: _, ...dadosUsuario } = novoUsuario; 
+    return res.status(201).json({ sucesso: true, usuario: dadosUsuario });
+});
+
 // --- ROTAS PARA OS JOGOS ---
 app.get('/api/jogos', (req, res) => {
     const jogos = lerArquivo(caminhoJogos);

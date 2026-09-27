@@ -12,5 +12,12 @@
     "email": "admin@keepkeys.com",
     "senha": "123",
     "role": "admin"
+  },
+  {
+    "id": 1790471212773,
+    "nome": "Kelvin",
+    "email": "kelvinleardini@gmail.com",
+    "senha": "Tomate123@",
+    "role": "cliente"
   }
 ]
