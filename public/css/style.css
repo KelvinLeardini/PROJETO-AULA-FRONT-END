@@ -1234,5 +1234,55 @@ aside .footer-redes .icones-redes {
         z-index: 10;
     }
 
+    /* Transforma o dashboard de admin em uma única coluna empilhada */
+    .admin-dashboard {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
 
+    /* Ajusta o espaçamento interno do container no mobile */
+    .admin-container {
+        padding: 15px;
+    }
+
+    /* Deixa os cards de estatísticas empilhados no celular */
+    .admin-estatisticas {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Faz a barra lateral do admin se comportar igual à da loja (escondida por padrão) */
+    #aplicativo aside {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.5s ease !important;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    }
+
+    /* Quando a classe 'ativo' for acionada pelo JS, o menu aparece */
+    #aplicativo aside.ativo {
+        left: 0;
+    }
+
+    /* Mostra o botão hambúrguer no topo do admin */
+    #aplicativo .btn-hamburguer {
+        display: flex !important;
+        position: relative;
+        left: 0;
+        flex-shrink: 0;
+        z-index: 1002;
+    }
+
+    /* Integra o botão hambúrguer perfeitamente quando o menu estiver aberto */
+    body:has(#aplicativo aside.ativo) .btn-hamburguer,
+    #aplicativo aside.ativo ~ header .btn-hamburguer {
+        left: 200px;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none;
+    }
 }
