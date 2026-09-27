@@ -127,13 +127,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const formLogin = document.getElementById('form-login');
 
     // Alterna a exibição entre Entrar x Painel do Usuário
+    // Alterna a exibição entre Entrar x Painel do Usuário e aplica Roles
     function atualizarEstadoLogin() {
         const estaLogado = localStorage.getItem('usuarioLogado') === 'true';
+        const role = localStorage.getItem('usuarioRole'); // Pega se é admin ou cliente
+        const nome = localStorage.getItem('usuarioNome');
 
         if (estaLogado) {
             // Esconde o botão Entrar e mostra o Painel
             btnEntrar.style.setProperty('display', 'none', 'important');
             painelUsuario.style.setProperty('display', 'flex', 'important');
+            
+            // Opcional: Mostra o nome do usuário no botão se tiver um span dentro dele
+            // painelUsuario.innerHTML = `<i data-lucide="user"></i> ${nome}`;
+
+            // Lógica do Administrador
+            if (role === 'admin') {
+                console.log("Logado como Administrador");
+                // Aqui você pode exibir um botão "Painel Admin" no header que antes estava com display: none
+                // Exemplo: document.getElementById('btn-admin-header').style.display = 'block';
+            } else {
+                console.log("Logado como Cliente");
+            }
         } else {
             // Mostra o botão Entrar e esconde o Painel completamente
             btnEntrar.style.setProperty('display', 'inline-block', 'important');
@@ -151,6 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSair) {
         btnSair.addEventListener('click', () => {
             localStorage.removeItem('usuarioLogado');
+            localStorage.removeItem('usuarioRole'); // Limpa a role
+            localStorage.removeItem('usuarioNome'); // Limpa o nome
             atualizarEstadoLogin();
         });
     }
@@ -168,15 +185,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Submissão do Formulário de Login
+    // Submissão do Formulário de Login
     if (formLogin) {
-        formLogin.addEventListener('submit', (e) => {
+        formLogin.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            localStorage.setItem('usuarioLogado', 'true');
-            atualizarEstadoLogin();
+            // Pega os valores digitados (Ajuste os IDs se estiverem diferentes no seu HTML)
+            const emailInput = document.getElementById('email').value;
+            const senhaInput = document.getElementById('senha').value;
 
-            modal.style.display = 'none';
-            formLogin.reset();
+            try {
+                // Envia os dados para a API do Node.js
+                const resposta = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: emailInput, senha: senhaInput })
+                });
+
+                const dados = await resposta.json();
+
+                if (dados.sucesso) {
+                    // Login real feito com sucesso! Salva o status e a ROLE (cliente ou admin)
+                    localStorage.setItem('usuarioLogado', 'true');
+                    localStorage.setItem('usuarioRole', dados.usuario.role);
+                    localStorage.setItem('usuarioNome', dados.usuario.nome);
+                    
+                    atualizarEstadoLogin();
+
+                    modal.style.display = 'none';
+                    formLogin.reset();
+                } else {
+                    // Exibe a mensagem de erro vinda do backend (ex: "E-mail ou senha inválidos")
+                    alert(dados.mensagem);
+                }
+            } catch (erro) {
+                console.error("Erro ao fazer login:", erro);
+                alert("Não foi possível conectar ao servidor.");
+            }
         });
     }
 

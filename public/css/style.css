@@ -355,6 +355,10 @@ aside hr.divisoria {
     padding-top: 0;
 }
 
+.produtos a {
+    text-decoration: none;
+}
+
 /* SEÇÃO DE PRODUTOS */
 .produtos h3 {
     text-align: center;
@@ -908,6 +912,8 @@ aside .footer-redes .icones-redes {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
 }
+
+
 
 
 
