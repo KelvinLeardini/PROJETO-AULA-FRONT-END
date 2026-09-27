@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - KeepKeys</title>
+    <style>
+        /* Estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa; /* Fundo cinza bem claro/branco */
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        .hero {
+            background-color: #0d47a1; /* Azul escuro */
+            color: #ffffff;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 900px;
+            margin: -2rem auto 3rem auto;
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Seções de Texto */
+        .secao-sobre {
+            margin-bottom: 2.5rem;
+        }
+
+        .secao-sobre h2 {
+            color: #1976d2; /* Azul médio */
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 0.5rem;
+        }
+
+        .secao-sobre p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Valores (Grid) */
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .valor-card {
+            background-color: #e3f2fd; /* Azul muito claro */
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #1976d2;
+        }
+
+        .valor-card h3 {
+            color: #0d47a1;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #333;
+            color: #fff;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Sobre o KeepKeys</h1>
+        <p>Simplificando a forma como você organiza e protege o que importa.</p>
+    </header>
+
+    <main class="container">
+        <section class="secao-sobre">
+            <h2>Nossa História</h2>
+            <p>O KeepKeys nasceu da necessidade de criar uma solução simples, segura e eficiente. Percebemos que, com a rotina cada vez mais digital, gerenciar nossas ferramentas precisava ser algo descomplicado.</p>
+            <p>Desde o nosso início, focamos em desenvolver um ambiente limpo e direto ao ponto, onde a tecnologia trabalha a favor da sua tranquilidade, sem barreiras ou distrações.</p>
+        </section>
+
+        <section class="secao-sobre">
+            <h2>Nossa Missão</h2>
+            <p>Fornecer uma plataforma confiável e acessível, garantindo que nossos usuários tenham sempre o controle em suas mãos, com máxima segurança e performance.</p>
+        </section>
+
+        <section class="secao-sobre">
+            <h2>Nossos Valores</h2>
+            <div class="valores-grid">
+                <div class="valor-card">
+                    <h3>Segurança</h3>
+                    <p>A proteção dos seus dados e informações é a base de tudo o que construímos.</p>
+                </div>
+                <div class="valor-card">
+                    <h3>Simplicidade</h3>
+                    <p>Acreditamos que as melhores soluções não precisam ser complexas ou difíceis de usar.</p>
+                </div>
+                <div class="valor-card">
+                    <h3>Inovação</h3>
+                    <p>Buscamos sempre melhorar nosso código e nossa lógica para entregar a melhor experiência.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 KeepKeys. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
