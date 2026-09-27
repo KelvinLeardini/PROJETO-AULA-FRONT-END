@@ -200,6 +200,14 @@ aside nav ul li a {
     transition: background-color 0.2s ease;
 }
 
+/* Espaçamento elegante para o ícone na navbar original */
+aside nav ul li a .lucide {
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 8px !important; /* Cria um respiro exato entre o ícone e o texto */
+    vertical-align: middle !important; /* Alinha perfeitamente com a altura da fonte */
+}
+
 aside nav ul li a:hover {
     transform: scale(1.15); /* Leve zoom ao passar o mouse */
     background-color: #1a1a1a;
@@ -1054,7 +1062,7 @@ aside .footer-redes .icones-redes {
 /* ==========================================
    AJUSTE PROFISSIONAL DA BARRA LATERAL (ADMIN)
    ========================================== */
-aside nav ul li a {
+#aplicativo aside nav ul li a {
     display: flex !important;
     align-items: center !important;
     gap: 12px !important; /* Espaço perfeito entre ícone e texto */
@@ -1064,7 +1072,7 @@ aside nav ul li a {
 }
 
 /* Controla o tamanho exato dos ícones do Lucide na sidebar */
-aside nav ul li a .lucide {
+#aplicativo aside nav ul li a .lucide {
     width: 20px !important;
     height: 20px !important;
     stroke-width: 2 !important;

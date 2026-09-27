@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Keys - Promoções e Ofertas</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="favicon" href="/imagens/Logo-1.png" type="image/png">
+</head>
+<body>
+    
+    <!-- Barra Lateral Original -->
+    <aside>
+        <div class="logo">
+            <a href="/index.html" class="logo-link"><img src="/imagens/Logo-1.png" alt="logo da loja"></a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/lancamentos.html"><i data-lucide="rocket"></i> Lançamentos</a></li>
+                <li><a href="/promocoes.html"><i data-lucide="tag"></i> Promoções</a></li>
+
+                <!-- Linha Divisória -->
+                <hr class="divisoria">
+
+                <li><a href="/jogos/ps/ps.html"><i data-lucide="gamepad-2"></i> Playstation</a></li>
+                <li><a href="/jogos/xbox/xbox.html"><i data-lucide="box"></i> Xbox</a></li>
+                <li><a href="/jogos/steam/Steam.html"><i data-lucide="monitor"></i> Steam</a></li>
+            </ul>
+        </nav>
+        
+        <div class="footer-redes">
+            <div class="icones-redes">
+                <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"><img src="/imagens/INSTLOGO.webp" alt="Instagram"></a>
+                <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank"><img src="/imagens/FACELOGO.png" alt="Facebook"></a>
+            </div>
+        </div>
+    </aside>
+
+    <div class="site">
+        <!-- Header igualzinho ao da Home -->
+        <header>
+            <button type="button" class="btn-hamburguer" id="btn-hamburguer" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <form action="#">
+                <div class="buscar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Buscar promoções...">
+                </div>
+            </form>
+
+            <div class="area-usuario">
+                <button type="button" id="btn-entrar-header">Entrar</button>
+
+                <div id="painel-usuario" class="painel-usuario" style="display: none;">
+                    <a href="admin.html" id="btn-admin-header" class="btn-admin" style="display: none;">
+                        Painel Admin
+                    </a>
+                    <span>Olá, <strong>Gamer</strong>!</span>
+                    <button type="button" id="btn-sair-header" class="btn-sair">Sair</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Banner de Destaque de Ofertas -->
+            <section class="banner">
+                <div class="lanc-banner" style="width: 100%; max-width: 1000px; height: 350px;">
+                    <img src="/imagens/Resident Evil Requiem.jpg" alt="Promoções Especiais" class="fade-img" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </section>
+
+            <!-- Seção de Jogos em Promoção -->
+            <section class="produtos">
+                <h3>Ofertas Imperdíveis</h3>
+
+                <div class="grade-produtos">
+                    <!-- Produto 1 em Promoção -->
+                    <article class="jogo-produtos">
+                        <img src="/imagens/control.jpg" alt="Control: Resonant" width="200px">
+                        <h4>Control: Resonant</h4>
+                        <p style="color: #ff4444; text-decoration: line-through; font-size: 0.9rem; margin: 0;">R$ 299,90</p>
+                        <p>R$ 149,90</p>
+                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
+                    </article>
+
+                    <!-- Produto 2 em Promoção -->
+                    <article class="jogo-produtos">
+                        <img src="/imagens/EldenRing.png" alt="Elden Ring" width="200px">
+                        <h4>Elden Ring</h4>
+                        <p style="color: #ff4444; text-decoration: line-through; font-size: 0.9rem; margin: 0;">R$ 299,90</p>
+                        <p>R$ 199,90</p>
+                        <button type="button"><i data-lucide="shopping-cart"></i>COMPRAR</button>
+                    </article>
+                </div>           
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Keep Keys - Sua Loja Gamer. Todos os direitos reservados.</p>
+            <ul>
+                <li><a href="#">Suporte</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="#">Pagamentos</a></li>
+            </ul>
+        </footer>
+
+    </div>
+
+    <!-- CDN do Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Vincula o script padrão do site para manter o login e menu hambúrguer funcionais -->
+    <script src="/js/script.js"></script>
+
+</body>
+</html>
