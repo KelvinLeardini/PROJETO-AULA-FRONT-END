@@ -929,6 +929,148 @@ aside .footer-redes .icones-redes {
     background-color: #cc7a00; /* Um tom de laranja um pouco mais escuro */
 }
 
+/* ==========================================
+   PAINEL DE ADMINISTRAÇÃO - DASHBOARD
+   ========================================== */
+.admin-container {
+    padding: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Cartões de Estatísticas no Topo */
+.admin-estatisticas {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.admin-card-stats {
+    flex: 1;
+    background-color: #2a2a30;
+    border: 1px solid #404048;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.admin-card-stats .icone {
+    background-color: #08469E;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-card-stats.verde .icone {
+    background-color: #28a745;
+}
+
+.admin-card-stats h4 {
+    margin: 0;
+    color: #888;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.admin-card-stats p {
+    margin: 5px 0 0 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Layout Principal (Formulário Esquerda / Lista Direita) */
+.admin-dashboard {
+    display: grid;
+    grid-template-columns: 350px 1fr; /* Coluna do form fixa, resto para o catálogo */
+    gap: 30px;
+    align-items: start;
+}
+
+.admin-titulo-secao {
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 0 0 20px 0;
+    padding-left: 10px;
+    border-left: 4px solid #ff0000;
+}
+
+/* Ajustes do Formulário */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-form input, .admin-form select {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    color: #ffffff;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.admin-form input:focus, .admin-form select:focus {
+    border-color: #08469E;
+}
+
+.admin-form button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.admin-form button:hover {
+    background-color: #218838;
+}
+
+/* Ajuste fino na grade de produtos apenas dentro do admin */
+.admin-grade-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* ==========================================
+   AJUSTE PROFISSIONAL DA BARRA LATERAL (ADMIN)
+   ========================================== */
+aside nav ul li a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important; /* Espaço perfeito entre ícone e texto */
+    padding: 12px 18px !important;
+    text-align: left !important; /* Alinha o texto à esquerda */
+    font-size: 0.95rem;
+}
+
+/* Controla o tamanho exato dos ícones do Lucide na sidebar */
+aside nav ul li a .lucide {
+    width: 20px !important;
+    height: 20px !important;
+    stroke-width: 2 !important;
+    flex-shrink: 0;
+}
+
 
 
 
