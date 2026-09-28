@@ -27,8 +27,20 @@ Este projeto prioriza a construção "na raça" dos fundamentos web, evitando fr
 
 ## ⚙️ Como Executar o Projeto
 
-Por se tratar de uma aplicação baseada inteiramente no Front-end sem necessidade de _build_ ou transpilação, rodar o projeto é extremamente simples:
+Por se tratar de uma aplicação baseada inteiramente no Front-end sem necessidade de build ou transpilação, rodar o projeto é extremamente simples:
 
-1. Clone este repositório:
-   ```bash
-   git clone [https://github.com/SEU_USUARIO/keep-keys-ecommerce.git](https://github.com/SEU_USUARIO/keep-keys-ecommerce.git)
+1. Clone este repositório utilizando o comando: git clone https://github.com/SEU_USUARIO/keep-keys-ecommerce.git
+2. Abra a pasta raiz do projeto.
+3. Execute o arquivo `index.html` no seu navegador (recomendamos o uso da extensão Live Server no VS Code para uma melhor experiência).
+
+## 👨‍💻 Equipe de Desenvolvimento
+
+Projeto construído de forma colaborativa pelos alunos de ADS:
+
+- **Kelvin Leardini** (1º Semestre) - Desenvolvimento Front-end / Lógica JS
+- **Yago Bafume** (1º Semestre) - Análise de Sistemas
+- **Victor Hugo** (1º Semestre) - Análise de Sistemas
+- **Gustavo Bernardes** (2º Semestre) - Análise de Sistemas
+
+---
+*Desenvolvido em 2026 como requisito prático do curso de Análise e Desenvolvimento de Sistemas.*
