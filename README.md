@@ -24,6 +24,7 @@ Este projeto prioriza a construção "na raça" dos fundamentos web, evitando fr
 - **JavaScript (Vanilla):** Manipulação do DOM, controle de estado, temporizadores e lógica de persistência.
 - **Vue.js (via CDN):** Utilizado pontualmente para reatividade no painel administrativo.
 - **Lucide Icons:** Biblioteca de ícones vetorizados em formato SVG.
+- **Back-end:** Node.js (API de autenticação e rotas).
 
 ## ⚙️ Como Executar o Projeto
 
@@ -42,6 +43,8 @@ node server.js
 ```bash
 localhost:3000
 ```
+
+Para rodar o projeto localmente, certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
 
 ## 👨‍💻 Equipe de Desenvolvimento
 
