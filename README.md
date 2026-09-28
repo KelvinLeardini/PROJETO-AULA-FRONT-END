@@ -30,11 +30,15 @@ Este projeto prioriza a construção "na raça" dos fundamentos web, evitando fr
 Por se tratar de uma aplicação baseada inteiramente no Front-end sem necessidade de build ou transpilação, rodar o projeto é extremamente simples:
 
 1. Clone este repositório utilizando o comando: git clone https://github.com/SEU_USUARIO/keep-keys-ecommerce.git
-2. Abra o terminal e digite:
+2. Instale as dependências. Abra o terminal e digite:
+```bash
+npm install bcryptjs express cors lucide
+```
+4. Depois, ainda no terminal digite:
 ```bash
 node server.js
 ```
-4. No seu navegador digite:
+5. No seu navegador digite:
 ```bash
 localhost:3000
 ```
