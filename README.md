@@ -30,8 +30,8 @@ Este projeto prioriza a construção "na raça" dos fundamentos web, evitando fr
 Por se tratar de uma aplicação baseada inteiramente no Front-end sem necessidade de build ou transpilação, rodar o projeto é extremamente simples:
 
 1. Clone este repositório utilizando o comando: git clone https://github.com/SEU_USUARIO/keep-keys-ecommerce.git
-2. Abra a pasta raiz do projeto.
-3. Execute o arquivo `index.html` no seu navegador (recomendamos o uso da extensão Live Server no VS Code para uma melhor experiência).
+2. Abra o terminal e digite > ```bash node server.js.
+3. No seu navegador digite ```bash localhost:3000.
 
 ## 👨‍💻 Equipe de Desenvolvimento
 
